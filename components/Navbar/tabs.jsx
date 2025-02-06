@@ -6,7 +6,10 @@ import { motion } from "framer-motion";
 import Logo from "./Logo.jsx";
 import Link from "next/link.js";
 import Image from "next/image.js";
-import MobileMenu from "../mobileMenu/index.jsx";
+import Navbar from "../../components/NavbarTest.jsx";
+import SidebarNav from "../../components/SideBar.jsx";
+
+// import MobileMenu from "../mobileMenu/index.jsx";
 import Marquee from "react-fast-marquee";
 import DropDown from "../../components/DropdownMenu.jsx";
 // Define SlideTabsExample component
@@ -27,12 +30,17 @@ export const SlideTabsExample = () => {
         <Logo />
       </div>
       <div className="mobile-menu block sm:hidden w-1/2"></div>
-      <div className="Logo-section hidden sm:block w-[60%] ">
-        <DropDown />
+      <div className="Logo-section  sm:block flex justify-center flex-row w-[60%] ">
+        <div className="hidden 2xl:block">
+          {" "}
+          <Navbar />
+        </div>
       </div>
       <div className="Logo-section   flex justify-center items-center w-[20%] ">
-        <div className="absolute right-0 top-4 z-[99999999999989899999999999999]">
-          <MobileMenu />
+        <div className="top-0  border border-green-400 right-3 left-auto z-[999999999] fixed w-[100vw]">
+          <div className="absolute right-0 top-0">
+            <SidebarNav />
+          </div>
         </div>
       </div>
     </div>

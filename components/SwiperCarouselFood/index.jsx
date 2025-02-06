@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 const video = [""];
-const imgs = [
-  "/images/Carousel-02.png",
-  "/images/Carousel-index12.png",
-  "/images/Carousel-02.png",
-  "/images/Carousel-index12.png",
-];
+const imgs = ["/images/Carousel-index13.png", "/images/Carousel-index12.png"];
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;

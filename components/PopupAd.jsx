@@ -57,11 +57,10 @@ const PopupAd = () => {
         }
 
         .popup-container {
-          background: #fff;
+          background: transparent;
           border-radius: 8px;
           padding: 20px;
 
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           animation: popup 0.5s ease-in-out;
         }
 
@@ -69,7 +68,7 @@ const PopupAd = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-bottom: 1px solid #ccc;
+
           padding-bottom: 10px;
         }
 

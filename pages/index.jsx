@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 // import { AnimatePresence } from "framer-motion";
 // import Preloader from "../components/toys05/Preloader";
 import Layout from "./Layout.js";
-
+import Link from "next/link";
+// import SidebarNav from "../components/SideBar.jsx";
 // import Landing from "../components/toys05/Landing";
 // import Projects from "../components/toys05/Projects";
 // import Description from "../components/toys05/Description";
@@ -46,6 +47,7 @@ import DragCarousel from "../components/DragCarousel/index.tsx";
 // import SlidingImages from "../components/toys05/SlidingImages";
 // import Contact from "../components/toys05/Contact";
 import Image from "next/image";
+// import { Link } from "lucide-react";
 const backgroundImage = "/images/S__23085150.png";
 const myLoader = ({ src, width, quality, placeholder }) => {
   return `https://www.dot-st.com/static/docs/nikoand/pages/2022_city_creek_v2/assets/images/${src}?w=${width}?p=${placeholder}`;
@@ -69,61 +71,12 @@ export default function Home() {
 
   return (
     <Layout>
-      <main className="bg-[#ece2d9]">
-        <PopupAd />
+      <main className="bg-[#e0d5c8] relative">
+        {/* <PopupAd /> */}
         {/* <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence> */}
-        <div>
-          <div className="bg-white">
-            <div className="sideBar  z-[999999] bottom-[23%] right-[-90%] fixed inline-flex  h-[1px]  flex-col justify-center  items-center ">
-              <Image
-                src="/imaghes/chap_2 (3).gif"
-                width={70}
-                height={70}
-                placeholder="empty"
-                alt="side-gif"
-                loading="lazy"
-              ></Image>
-              <p className="font-bold px-4 inline-block rotate-[90deg]  bg-blue-300  text-[13px] ml-[64px] text-black">
-                CHAPTER-1 KIDS COORRDINATE 8DAYS{" "}
-              </p>
 
-              <div className="fixLink mt-[150px] w-[90px] pc is-visible">
-                <span class="link">
-                  <svg
-                    id="_レイヤー_2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 195 195"
-                  >
-                    <path
-                      class="cls-1"
-                      d="m0,173.67456c0,11.77771,9.54772,21.32544,21.32544,21.32544h152.34912c11.77771,0,21.32544-9.54772,21.32544-21.32544V21.32544c0-11.77771-9.54772-21.32544-21.32544-21.32544"
-                    >
-                      <Image
-                        src="/imaghes/chap_2 (3).gif"
-                        width={70}
-                        height={70}
-                        placeholder="empty"
-                        alt="side-gif"
-                        loading="lazy"
-                      ></Image>
-                    </path>
-                  </svg>
-                </span>{" "}
-                <div className="absolute border border-green-400  top-[65%] right-[52px] rotate-[-45deg] z-[99999999]">
-                  <p className="text text-white text--1 font-extabold  text-[16px] f-Futura-Demi">
-                    ONLINE SHOP
-                  </p>{" "}
-                  <p className="text text-white text--1  text-[11px] f-Futura-Demi">
-                    関連アイテムを
-                  </p>
-                </div>{" "}
-                <span class="yajirushi"></span>
-              </div>
-            </div>
-          </div>
-        </div>
         <section
           className="section_Hero mt-10"
           data-aos-delay="7000"
@@ -131,11 +84,87 @@ export default function Home() {
         >
           <SwiperCarouselHero />
         </section>
-        <section className="section_DragCarousel">
-          <DragCarousel />
+        <section className="section_main_category ">
+          <div className="grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 gap-3 w-[80%] mx-auto">
+            <div>
+              <Link href="/category/categories/">
+                <Image
+                  src="/images/category/LINE_ALBUM_202523_250204_1_0.webp"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/category/small-children/">
+                {" "}
+                <Image
+                  src="/images/category/LINE_ALBUM_202523_250204_2_0.webp"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+            <div>
+              <Link href="/category/infants/">
+                <Image
+                  src="/images/category/LINE_ALBUM_202523_250204_3_0.webp"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+            <div>
+              <Link href="/category/gift/">
+                {" "}
+                <Image
+                  src="/images/category/LINE_ALBUM_202523_250204_4_0.webp"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+            <div>
+              <Link href="/category/parent-childfootwear/">
+                {" "}
+                <Image
+                  src="/images/category/LINE_ALBUM_202523_250204_5_0.webp"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+            <div>
+              <Link href="/category/">
+                {" "}
+                <Image
+                  src="/images/category/LINE_ALBUM.png"
+                  placeholder="empty"
+                  loading="lazy"
+                  width={400}
+                  height={400}
+                ></Image>
+              </Link>
+            </div>
+          </div>
         </section>
+
+        {/* <section className="section_DragCarousel">
+          <DragCarousel />
+        </section> */}
         <Parallax
-          className="mt-[100px] pb-[100px] fill-[#b5b5b5]"
+          className="mt-[100px] hidden pb-[100px] fill-[#b5b5b5]"
           bgImage={backgroundImage}
           strength={500}
         >
@@ -201,7 +230,7 @@ export default function Home() {
             </div>
           </section>
         </Parallax>
-        <section className="rounded-[30px]  px-[10px] md:px-[50px] xl:px-[100px] 2xl:px-[140px] relative z-[99999] bg-white mt-[-100px] py-[100px]">
+        <section className="rounded-[30px]  px-[10px] md:px-[50px] xl:px-[100px] 2xl:px-[140px] relative z-[99999] bg-[#e0d5c8] py-[100px]">
           <div>
             <div className="txt p-8">
               <h4 className="text-[32px] font-semibold">Premium Speakers</h4>
@@ -230,10 +259,11 @@ export default function Home() {
                   className="card rounded-2xl flex flex-col justify-center items-center h-full p-5 border-2 border-gray-800"
                 >
                   <div className="title">
-                    <b className="text-center bg-[#666666] text-[18px] font-bold text-white">
+                    <b className="text-center bg-[#666666] text-[18px] font-bold text-white ">
                       GOODS FOR HAMBURGER SHOP
                     </b>
                     <p className="text-center">Premium Speakers</p>
+                    <p></p>
                   </div>
                   <div className="slider">{/* <SwiperCarousel /> */}</div>
                 </div>
@@ -241,7 +271,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="w-full  flex-col  md:flex-row flex justify-center items-center   bg-white ">
+        <div className="w-full  flex-col  md:flex-row flex justify-center items-center   bg-[#e0d5c8] ">
           <div className="left w-full md:w-1/2 border border-green">
             <div>
               <div className="top">
@@ -264,12 +294,12 @@ export default function Home() {
               </div>
               <div className="bottom"></div>
             </div>
-            <div className="">
+            <div className="bg-[#e0d5c8] ">
               <SwiperCard />
             </div>
           </div>
 
-          <div className="right overflow-hidden relative w-full md:w-1/2 border border-green">
+          <div className="right bg-[#e0d5c8]  overflow-hidden relative w-full md:w-1/2 border border-green">
             <div className="absolute w-full h-full top-0 left-0 z-[99] bg-[#333] opacity-50"></div>
             <img src="/images/IMG_5675.jpg" className="w-full "></img>
             <div className="txt left-[10%] bottom-[20%] absolute z-[99999]">
@@ -346,52 +376,10 @@ export default function Home() {
         <Double />
       </section> */}
 
-        <section className="mt-[350px]">
-          <div className="relative">
-            <div className="absolute  top-[-100px] w-full left-0 ">
-              <div className="flex">
-                <div className="left w-1/2 relative">
-                  <Image
-                    src="/images/S__23085144.png"
-                    placeholder="empty"
-                    width={250}
-                    height={250}
-                    className="absolute h-auto left-5 w-[250px] z-[1] top-[-120px]"
-                    loading="lazy"
-                    alt="planet"
-                  ></Image>
-                  {/* <Image
-                  src="/images/截圖-2024-12-05-晚上9.46.54.png"
-                  placeholder="empty"
-                  width={250}
-                  height={250}
-                  className="absolute h-auto left-[10%] w-[250px] z-[1] top-[-100px]"
-                  loading="lazy"
-                  alt="planet"
-                ></Image> */}
-                </div>
-                <div className="right w-1/2 relative">
-                  <Image
-                    src="/images/fantastic_hare_36410_Planet_Solid_Color_Background_6576d313-40aa-4ead-8f00-7e9ec156890e.png"
-                    placeholder="empty"
-                    width={400}
-                    height={400}
-                    className="absolute h-auto right-5 w-[400px] z-[1] top-[-120px]"
-                    loading="lazy"
-                    alt="planet"
-                  ></Image>
-                </div>
-              </div>
-            </div>
-            <div className="mt-[80px] relative z-[999]">
-              <EmblaCarousel />
-            </div>
-          </div>
-        </section>
         {/* <section className="section_Hero">
         <HeroSlider />
       </section> */}
-        <section className="section_Products_Tabs relative  mt-[100px] flex">
+        {/* <section className="section_Products_Tabs relative  mt-[100px] flex">
           <div className="main-img border border-black w-[220px]  absolute top-[6%] left-[2%] ">
             <Image
               src="/images/S__45544757.png"
@@ -403,7 +391,29 @@ export default function Home() {
             ></Image>
           </div>
           <Tabs />
-        </section>
+        </section> */}
+        <button class="group relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-neutral-950 font-medium text-neutral-200 transition-all duration-300 hover:w-32">
+          <div class="inline-flex whitespace-nowrap opacity-0 transition-all duration-200 group-hover:-translate-x-3 group-hover:opacity-100">
+            Hover me
+          </div>
+          <div class="absolute right-3.5">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+            >
+              <path
+                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+        </button>
       </main>
     </Layout>
   );

@@ -6,8 +6,9 @@ import {
   FiHome,
   FiPieChart,
 } from "react-icons/fi";
+import Navbartext from "../components/NavbarTest";
 import { AnimatePresence, motion } from "framer-motion";
-import NavbarTest from "../components/NavbarTest";
+// import NavbarTest from "../components/NavbarTest";
 export default function Features() {
   return (
     <div className="flex  w-auto justify-start p-1 text-neutral-200 md:justify-center">

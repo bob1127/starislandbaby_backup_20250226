@@ -115,27 +115,27 @@ export const HoverImageLinks = () => {
     <section className=" p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
         <Link
-          heading="蝦皮逛逛 Shoppee"
-          subheading="Learn what we do here"
-          imgSrc="https://www.dot-st.com/static/docs/nikoand/keyvisual/images/nk_main_240704_staff.jpg"
+          heading="送禮專區"
+          subheading="好禮折扣盡在這"
+          imgSrc="https://shoplineimg.com/602cc4d17bc9170057fba437/67a0157a77f14300117012a4/540x.webp?source_format=jpg"
           href="https://shopee.tw/"
         ></Link>
         <Link
-          heading="官方臉書"
-          subheading="We work with great people"
-          imgSrc="https://www.dot-st.com/static/docs/nikoand/keyvisual/images/nk_main_240712_new_women.jpg"
+          heading="購物說明"
+          subheading="購買前請先閱讀"
+          imgSrc="https://shoplineimg.com/602cc4d17bc9170057fba437/67a0158ba88f01000cc0a373/540x.webp?source_format=jpg"
+          href="#"
+        />
+        <Link
+          heading="聯絡我們"
+          subheading="有任何問題歡迎聯繫"
+          imgSrc="https://shoplineimg.com/602cc4d17bc9170057fba437/67a0159dd1d5810010c962d3/540x.webp?source_format=jpg"
           href="#"
         />
         <Link
           heading="Instagram"
-          subheading="Our work speaks for itself"
-          imgSrc="https://www.dot-st.com/static/docs/nikoand/keyvisual/images/nk_main_240705_tshirts_and_hair.jpg"
-          href="#"
-        />
-        <Link
-          heading="玩具 Toys"
-          subheading="Our work speaks for itself"
-          imgSrc="https://www.dot-st.com/static/docs/nikoand/keyvisual/images/nk_main_240705_tshirts_and_hair.jpg"
+          subheading="去IG看看"
+          imgSrc="https://shoplineimg.com/602cc4d17bc9170057fba437/67a015ab0c566c000dce7c6c/540x.webp?source_format=jpg"
           href="#"
         />
       </div>
