@@ -88,7 +88,7 @@ class Example extends Component {
     const { open } = this.state;
     return (
       <div className="mb-3  border-b border-slate-300   pb-3">
-        <div className="flex cursor-pointer items-center justify-between rounded-md transition-colors hover:bg-slate-100">
+        <div className="flex cursor-pointer pt-[40px] items-center justify-between rounded-md transition-colors hover:bg-slate-100">
           <div className="flex items-center p-3 gap-2">
             {open && (
               <motion.div
@@ -106,7 +106,6 @@ class Example extends Component {
               </motion.div>
             )}
           </div>
-          {open && <FiChevronDown className="mr-2" />}
         </div>
       </div>
     );
@@ -148,9 +147,9 @@ class Example extends Component {
         <motion.button
           layout
           onClick={this.ToggleClose}
-          className="absolute top-4 right-4 z-[999999999] border-t border-slate-300 w-[50px] h-[50px] bg-slate-300 transition-colors hover:bg-slate-100"
+          className="absolute top-8 right-4 mt-3 rounded-[100px] z-[999999999] border-t border-slate-300 w-[100px] h-[45px] bg-[#91AD9E] transition-colors hover:bg-[#667b70]"
         >
-          <div className="flex items-center p-2">
+          <div className="flex items-center pb-2">
             <motion.div
               layout
               className="grid size-10 place-content-center text-lg"
@@ -167,7 +166,7 @@ class Example extends Component {
                 transition={{ delay: 0.125 }}
                 className="text-xs font-medium"
               >
-                Hide
+                關閉
               </motion.span>
             ) : (
               <motion.span
@@ -177,7 +176,7 @@ class Example extends Component {
                 transition={{ delay: 0.125 }}
                 className="text-xs font-medium"
               >
-                Show
+                選單
               </motion.span>
             )}
           </div>
@@ -197,16 +196,15 @@ class Example extends Component {
           layout
           className="sticky top-12 h-screen shrink-0 border-r border-slate-300 bg-white z-[9999]"
           style={{
-            width: open ? "325px" : "0px",
+            width: open ? "370px" : "0px",
           }}
         >
           <this.TitleSection />
           <div className="p-5">
-            <NavbarTestSideBar />
+            {/* 传递 ToggleClose 方法给 NavbarTestSideBar */}
+            <NavbarTestSideBar closeSidebar={this.ToggleClose} />
           </div>
-          <div className="flex z-[9999999] bottom-0"></div>
         </motion.nav>
-
         <div className="h-[100vh] fix top-0 w-full"></div>
       </div>
     );

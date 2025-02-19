@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-const SideBar = dynamic(() => import("../../components/NavbarTestSideBar"), {
-  ssr: false, // 禁用服务器端渲染
-});
+import Image from "next/image";
+const SideBar = dynamic(
+  () => import("../../components/NavbarTestSideBarToggle"),
+  {
+    ssr: false, // 禁用服务器端渲染
+  }
+);
 import Layout from "../Layout";
 import { useRouter } from "next/router"; // 获取 slug
+// import { div } from "three/src/nodes/TSL.js";
 
 const { NEXT_PUBLIC_API_BASE_URL } = process.env;
 
 // 获取所有产品数据
 async function fetchAllProducts() {
-  const productUrl = `${NEXT_PUBLIC_API_BASE_URL}api/products?consumer_key=ck_ec41b174efc5977249ffb5ef854f6c1fdba1844b&consumer_secret=cs_d6c8d7ba3031b522ca93e6ee7fb56397b8781d1f`;
+  const productUrl = `https://starislandbaby.com/test/wp-json/wc/v3/products?consumer_key=ck_ec41b174efc5977249ffb5ef854f6c1fdba1844b&consumer_secret=cs_d6c8d7ba3031b522ca93e6ee7fb56397b8781d1f`;
 
   console.log("Fetching all products from:", productUrl);
 
@@ -87,18 +92,19 @@ const CategoryPage = ({ slug, products }) => {
 
   return (
     <Layout>
-      <div className="my-[200px]  flex flex-col">
+      <div className="mb-[200px] mt-[300px]  flex flex-col">
         <div className="top-navgation pl-10">
           <a href="/">Home</a> ← <span>{slug ? slug : "All Products"}</span>
         </div>
-        <div className="bottom-content flex">
+
+        <div className="bottom-content flex flex-col lg:flex-row">
           {/* 左側側邊欄保留 */}
-          <div className="left w-[40%] 2xl:w-[25%] p-10 side_bar">
-            <div className="wrap rounded-xl bg-[#91AD9E] px-5 flex flex-col w-full h-full">
+          <div className="left  w-full lg:w-[40%] 2xl:w-[25%] py-0 px-4 lg:p-10 side_bar">
+            <div className="wrap rounded-xl bg-[#91AD9E]  px-5 flex flex-col w-full pb-10">
               <div className="title flex justify-center py-10 w-full border-b-1 font-bold">
                 <b>尋找您需要的商品</b>
               </div>
-              <div className="menu">
+              <div className="menu lg:py-0 pt-5 pb-10">
                 <SideBar />
               </div>
             </div>
@@ -106,8 +112,19 @@ const CategoryPage = ({ slug, products }) => {
 
           {/* 右側產品區域，只有在有產品時才顯示 */}
           {products && products.length > 0 && (
-            <div className="right w-[60%] 2xl:w-[75%] 2xl:pr-[200px] pt-5 products_menu">
-              <div className="flex flex-wrap" data-aos="fade-up">
+            <div className="right w-[100%] justify-center items-center lg:items-start lg:justify-start sm:pt-10 flex-col flex 2xl:w-[75%] 2xl:pr-[200px] pt-5 products_menu">
+              <Image
+                data-aos="fade-up"
+                width={500}
+                height={400}
+                placeholder="empty"
+                className="rounded-2xl h-auto w-[90%] "
+                src="/images/LINE25032_present_banner.jpg.webp"
+              />
+              <div
+                className=" flex flex-wrap justify-center sm:justify-start items-center"
+                data-aos="fade-up"
+              >
                 {products.map((product) => {
                   const productImage =
                     product.images?.[0]?.src || "/default-image.jpg";
@@ -117,7 +134,7 @@ const CategoryPage = ({ slug, products }) => {
                       href={`/product/${product.slug}`}
                       className="mt-2"
                     >
-                      <div className="card m-3 overflow-hidden w-[220px] bg-[#E4E6E1] border border-gray-100 p-4">
+                      <div className="card m-3  overflow-hidden w-[320px] sm:w-[260px]  2xl:w-[280px] bg-[#E4E6E1] border rounded-xl border-gray-100 p-8">
                         <img
                           src={productImage}
                           alt={product.name}

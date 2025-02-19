@@ -4,6 +4,7 @@ import { MouseEvent as ReactMouseEvent, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import { MoveLeft, MoveRight } from "lucide-react";
+import { useEffect } from "react";
 
 import { cn } from "../../lib/utils.js";
 
@@ -17,16 +18,16 @@ const articles = [
   {
     title:
       "Building a fully customisable carousel slider with swipe gestures and navigation using Framer Motion",
-    url: "https://www.nikoand.jp/wp-content/uploads/2024/06/800_452.jpg",
+    url: "/images/S__4653065拷貝2.jpg",
   },
   {
     title:
       "Building a customisable Input component with NextJS, ReactHookForm, TailwindCSS and TypeScript",
-    url: "/images/S__23085150.png",
+    url: "/images/S__4653066.jpg",
   },
   {
     title: "Handling Forms in NextJS with busboy, ReactHookForm and TypeScript",
-    url: "https://www.nikoand.jp/wp-content/uploads/2024/02/bnr_nk_10th_800_452-1.jpg",
+    url: "/images/S__4653063.jpg",
   },
 ];
 
@@ -181,34 +182,31 @@ export default function SuggestedCarousel() {
       e.stopPropagation();
     }
   }
+  const carouselRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const font = new FontFace(
+      "ResourceHanRoundedCN-Heavy",
+      "url(/fonts/ResourceHanRoundedCN-Heavy.ttf)"
+    );
+
+    font
+      .load()
+      .then((loadedFont) => {
+        document.fonts.add(loadedFont);
+        if (carouselRef.current) {
+          carouselRef.current.style.fontFamily =
+            "ResourceHanRoundedCN-Heavy, sans-serif";
+        }
+      })
+      .catch((error) => {
+        console.log("字體加載失敗:", error);
+      });
+  }, []);
   return (
     <>
-      <div className="text-center px-[30px]">
-        <div className="flex justify-center gap-4">
-          <Link
-            className="text-sm underline underline-offset-2 hover:text-lime-300"
-            href={"https://medium.com/@jeyprox"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            to the article
-          </Link>
-          <Link
-            className="text-sm underline underline-offset-2 hover:text-lime-300"
-            href={"https://github.com/jeyprox/framer-carousel"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            to the repo
-          </Link>
-        </div>
-        <h1 className="my-[20px] text-[40px] lg:text-6xl font-extrabold uppercase">
-          0-5歲 服飾銷售
-        </h1>
-        <p className="text-sm text-gray-400">
-          only really works on desktop for now
-        </p>
+      <div ref={carouselRef} className="flex justify-center">
+        <h1 className="text-[7vmin] 2xl:text-[90px] my-10">HAVE NICE DAY</h1>
       </div>
       <div className="group container ">
         <motion.div
@@ -276,7 +274,7 @@ export default function SuggestedCarousel() {
                   key={article.title}
                   ref={(el) => (itemsRef.current[index] = el)}
                   className={cn(
-                    "group relative shrink-0 select-none px-3 transition-opacity duration-300",
+                    "group relative ml-[-8vw] shrink-0 select-none px-3 transition-opacity duration-300",
                     !active && "opacity-30"
                   )}
                   transition={{
@@ -284,7 +282,7 @@ export default function SuggestedCarousel() {
                     duration: 0.4,
                   }}
                   style={{
-                    flexBasis: active ? "40%" : "30%",
+                    flexBasis: active ? "60%" : "40%",
                   }}
                 >
                   <Link

@@ -107,8 +107,11 @@ module.exports = {
         none: 'none',
       },
       fontFamily: {
-        inter: ['var(--font-inter)', 'sans-serif'],
-      },
+  			custom: [
+  				'DF-01',
+  				'sans-serif'
+  			]
+  		},
       zIndex: {
         '-1': '-1',
       },

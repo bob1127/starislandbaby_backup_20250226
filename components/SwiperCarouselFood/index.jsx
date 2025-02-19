@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 
 const video = [""];
-const imgs = ["/images/Carousel-index13.png", "/images/Carousel-index12.png"];
+const imgs = ["/images/S__4677656.png"];
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -48,7 +48,7 @@ export default () => {
   };
 
   return (
-    <div className="relative overflow-hidden  py-8">
+    <div className="relative mx-auto w-full sm:w-[80%] xl:w-[75%]  mt-[50px] md:mt-[100px] 2xl:mt-[50px] overflow-hidden  py-8">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -68,7 +68,7 @@ export default () => {
         <Images imgIndex={imgIndex} />
       </motion.div>
 
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      {/* <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} /> */}
       <GradientEdges />
     </div>
   );
@@ -85,6 +85,7 @@ const Images = ({ imgIndex }) => {
               backgroundImage: `url(${imgSrc})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              width: "100%",
             }}
             animate={{
               scale: imgIndex === idx ? 0.95 : 0.85,

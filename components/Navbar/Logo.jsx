@@ -1,21 +1,36 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-export default function App() {
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="h-auto">
+    <div className=" top-2 left-0 w-full  shadow-md  z-50">
       <a
         href="/"
-        className="Logo  rounded-[50px] block py-2  text-center w-[80px] text-[30px] font-extrabold  px-3 text-black"
+        className="Logo rounded-[50px] block py-2 text-center text-[30px] font-extrabold px-3 text-black"
       >
-        <Image
+        <img
           src="/images/company-logo.png"
-          placeholder="empty"
-          loading="lazy"
           alt="company-logo"
-          width={80}
-          height={80}
-        ></Image>
+          className={`transition-all mt-4 w-[45px] sm:w-[55px] mr-4 duration-300 
+            ${isScrolled ? "lg:w-[55px]" : "lg:w-[110px]"}`}
+        />
       </a>
     </div>
   );

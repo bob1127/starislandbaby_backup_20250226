@@ -1,13 +1,39 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@font-face {
+  font-family: 'DF-01';
+  src: url('/fonts/DF-01.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+
+@font-face {
+  font-family: "ResourceHanRoundedCN-Heavy";
+  src: url("/fonts/ResourceHanRoundedCN-Heavy.woff2") format("woff2"),
+       url("/fonts/ResourceHanRoundedCN-Heavy.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+.backdrop-blur-lg{
+  --tw-backdrop-blur: blur(0)!important;
+}
 :root{
   /* 購買按鈕 */
   --color-buy-dark:#2c81db;
     /* 卡片 */
     --color-card-1:#ef4023;
       --color-card-2:#2382ef;
+}
+.product_info .transition-transform{
+  display: none !important;
+ 
+}
+.bg-content1{
+  background: transparent !important;
 }
 .shadow-medium {
     box-shadow: none !important;
@@ -1111,3 +1137,5 @@ img {
   border: 1px solid rgba(0, 0, 0, 1);
   animation-delay: 2s;
 }
+
+

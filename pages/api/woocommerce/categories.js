@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       }
 
       // 获取分类 ID
-      const categoryUrl = `${NEXT_PUBLIC_WP_API_BASE_URL}wp-json/wc/v3/products/categories?slug=${slug}&consumer_key=${NEXT_PUBLIC_WC_CONSUMER_KEY}&consumer_secret=${NEXT_PUBLIC_WC_CONSUMER_SECRET}`;
+      const categoryUrl = `${NEXT_PUBLIC_WP_API_BASE_URL}wp-json/wc/v3/products/categories&consumer_key=${NEXT_PUBLIC_WC_CONSUMER_KEY}&consumer_secret=${NEXT_PUBLIC_WC_CONSUMER_SECRET}`;
       console.log("Category Request URL:", categoryUrl);
 
       const categoryResponse = await axios.get(categoryUrl);

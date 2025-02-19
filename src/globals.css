@@ -1,6 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@font-face {
+  font-family: 'DF-01';
+  src: url('/fonts/DF-01.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "ResourceHanRoundedCN-Heavy";
+  src: url("/fonts/ResourceHanRoundedCN-Heavy.woff2") format("woff2"),
+       url("/fonts/ResourceHanRoundedCN-Heavy.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+ 
 
 :root{
   /* 購買按鈕 */
@@ -9,11 +26,18 @@
     --color-card-1:#ef4023;
       --color-card-2:#2382ef;
 }
+.product_info .transition-transform{
+  display: none !important;
+ 
+}
+.bg-content1{
+  background: transparent !important;
+}
 .shadow-medium {
     box-shadow: none !important;
 }
 .Logo-section span{
-  color: rgb(21, 21, 21) !important;
+  color: white !important;
 }
 /* 按鈕 */
 .bg-buy-dark{

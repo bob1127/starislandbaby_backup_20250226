@@ -1,5 +1,5 @@
 import Image from "next/image";
-// import { Swiper, SwiperSlide } from "./Slider";
+import { Swiper, SwiperSlide } from "./Slider";
 
 const galleryCarouselBreakpoints = {
   320: {
@@ -19,7 +19,7 @@ const galleryCarouselBreakpoints = {
 export default function CarouselThumbs({ gallery, setThumbsSwiper }) {
   return (
     <div className="max-w-md mt-5 lg:mt-8 mx-auto relative lg:pb-2">
-      {/* <Swiper
+      <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={20}
         watchSlidesProgress={true}
@@ -41,7 +41,7 @@ export default function CarouselThumbs({ gallery, setThumbsSwiper }) {
             />
           </SwiperSlide>
         ))}
-      </Swiper> */}
+      </Swiper>
     </div>
   );
 }
