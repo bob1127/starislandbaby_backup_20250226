@@ -224,9 +224,9 @@ const ProductPage = ({ product }) => {
         />
       </Head>
 
-      <div className="flex flex-col" data-aos="fade-up">
+      <div className="flex flex-col items-center px-[200px]" data-aos="fade-up">
         <div className="product_top_info px-[20px] sm:px-[50px] xl:px-[100px] pt-[140px] sm:pt-[200px] xl:pt-[250px]">
-          <div className="flex lg:flex-row flex-col">
+          <div className="flex lg:flex-row flex-col justify-center items-center">
             <div className="w-full lg:w-1/2 p-2 lg:p-8 flex-col mx-auto flex justify-center items-center">
               {/* Main Image Swiper */}
               <section className="w-full ">
@@ -279,7 +279,7 @@ const ProductPage = ({ product }) => {
                     freeMode={true}
                     watchSlidesProgress={true}
                     modules={[FreeMode, Navigation, Thumbs]}
-                    className="thumbs mt-3 w-full"
+                    className="thumbs mt-3 w-[90%] xl:w-[80%] mx-auto"
                   >
                     {product.images.map((image, index) => (
                       <SwiperSlide key={index}>

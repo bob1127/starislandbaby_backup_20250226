@@ -102,7 +102,7 @@ const CategoryPage = ({ slug, products }) => {
           <div className="left w-full lg:w-[40%] 2xl:w-[25%] py-0 px-4 lg:p-10 side_bar">
             <div className="wrap rounded-xl bg-[#91AD9E] px-5 flex flex-col w-full pb-10">
               <div className="title flex justify-center py-10 w-full border-b-1 font-bold">
-                <b>尋找您需要的商品</b>
+                <b className="text-[22px]">尋找您需要的商品</b>
               </div>
               <div className="menu lg:py-0 pt-5 pb-10">
                 <SideBar />

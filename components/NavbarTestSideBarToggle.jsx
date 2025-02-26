@@ -101,7 +101,7 @@ const Navbar = () => {
                   disabled={isMobile}
                 >
                   <Link href={`/category/${category.slug}`} passHref>
-                    <span className="whitespace-nowrap group-hover:gray-900 font-bold">
+                    <span className="whitespace-nowrap text-[18px] group-hover:gray-900 font-bold">
                       {category.name}
                     </span>
                   </Link>
