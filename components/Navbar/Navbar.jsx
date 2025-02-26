@@ -9,7 +9,7 @@ import ModalBtn02 from "../../components/ModalBtn-2.jsx";
 import { useTheme } from "next-themes";
 // import Switcher from '../Switcher.js';
 import Image from "next/image";
-import MobileMenu from "../../components/MobileHeader/index.jsx";
+// import MobileMenu from "../../components/MobileHeader/index.jsx";
 // import modalBTN from '../../components//mobileMenu/index.jsx'
 // import { ThemeSwitcher } from '@/app/ThemeSwitcher';
 // import Switchers from '../Switcher.js/index.js'

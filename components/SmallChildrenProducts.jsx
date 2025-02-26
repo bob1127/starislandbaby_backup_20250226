@@ -3,9 +3,19 @@ import { Card, CardBody } from "@nextui-org/react";
 import Link from "next/link";
 import "aos/dist/aos.css";
 import Image from "next/image";
+import EasyProduct from "../components/easyProduct.jsx";
+import {
+  Modal,
+  ModalContent,
+  ModalBody,
+  Button,
+  useDisclosure,
+} from "@heroui/react";
+import { FollowerPointerCard } from "../components/ui/following-pointer.tsx";
+
 async function fetchAllProducts() {
   try {
-    const productUrl = `${process.env.NEXT_PUBLIC_WP_API_BASE_URL}wp-json/wc/v3/products?consumer_key=${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}`;
+    const productUrl = `${process.env.NEXT_PUBLIC_WP_API_BASE_URL}wp-json/wc/v3/products?consumer_key=${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}&per_page=100`;
     const response = await fetch(productUrl);
     if (!response.ok) {
       throw new Error(`Failed to fetch products. Status: ${response.status}`);
@@ -22,7 +32,7 @@ export default function ProductGrid() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const productsPerPage = 4; // 每頁顯示4個產品
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +45,6 @@ export default function ProductGrid() {
       setProducts(filteredProducts);
       setLoading(false);
     };
-
     fetchData();
   }, []);
 
@@ -57,71 +66,135 @@ export default function ProductGrid() {
 
   return (
     <div className="container w-[75%] flex flex-col mx-auto py-1 px-4">
-      <div className="txt">
-        <h2 className="text-[7vmin]">小童-Small Children</h2>
-      </div>
+      <Image
+        src="/images/for_kids_title.jpg"
+        placeholder="empty"
+        loading="lazy"
+        className="mx-auto max-w-[700px]"
+        width={700}
+        height={300}
+        alt="for_kid_title"
+      ></Image>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {currentProducts.map((product) => (
-          <Link
-            key={product.id}
-            href={`/product/${product.slug}`}
-            className="group block"
-          >
-            <Card className="bg-transparent p-4 rounded-lg">
-              <CardBody className="flex flex-col items-center">
-                <img
-                  loading="lazy"
-                  alt={product.name}
-                  className="rounded-xl group-hover:scale-105 transition duration-200"
-                  src={product.images[0]?.src || "/images/default.jpg"}
-                  width={300}
-                  height={300}
-                />
-                <b>{product.name}</b>
-                <p className="mt-2 text-gray-700 font-semibold">
-                  Price: ${product.price}
-                </p>
-              </CardBody>
-            </Card>
-          </Link>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       {/* Pagination Controls */}
-      <div className="flex justify-center mt-6 space-x-2">
-        <button
-          className="px-4 py-2  rotate-180 rounded-lg disabled:opacity-50"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          <Image
-            src="/images/right-arrow.png"
-            placeholder="empty"
-            loading="lazy"
-            width={50}
-            height={50}
-            alt="arrow"
-          ></Image>
-        </button>
-        <span className="px-4 py-2">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          className="px-4 py-2  rounded-lg disabled:opacity-50"
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          <Image
-            src="/images/right-arrow.png"
-            placeholder="empty"
-            loading="lazy"
-            width={50}
-            height={50}
-            alt="arrow"
-          ></Image>
-        </button>
-      </div>
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-6 space-x-2">
+          <button
+            className="px-4 py-2 rotate-180 rounded-lg disabled:opacity-50"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <Image
+              src="/images/right-arrow.png"
+              width={50}
+              height={50}
+              alt="arrow"
+            />
+          </button>
+          <span className="px-4 py-2">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-4 py-2 rounded-lg disabled:opacity-50"
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            <Image
+              src="/images/right-arrow.png"
+              width={50}
+              height={50}
+              alt="arrow"
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
+
+function ProductCard({ product }) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleOpen = () => {
+    setSelectedProduct(product);
+    onOpen();
+  };
+
+  return (
+    <div className="group block ">
+      <FollowerPointerCard
+        title={<b>{product.name}</b>}
+        avatar={blogContent.authorAvatar}
+      >
+        <Button
+          onPress={handleOpen}
+          className="w-full p-2 !bg-transparent h-full"
+        >
+          <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
+            <div className="w-full aspect-w-16 aspect-h-10 bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
+              <Image
+                src={product.images[0]?.src || "/images/default.jpg"}
+                alt={product.name}
+                width={400}
+                height={300}
+                className="object-cover group-hover:scale-95 group-hover:rounded-2xl transition-transform duration-200"
+              />
+            </div>
+            <div className="p-4">
+              <h2 className="font-bold my-4 text-lg text-zinc-700">
+                {product.name}
+              </h2>
+              <h2 className="font-normal my-4 text-sm text-zinc-500">
+                Price: ${product.price}
+              </h2>
+              <div className="flex flex-row justify-between items-center mt-10"></div>
+            </div>
+          </div>
+        </Button>
+        <Modal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          size="full"
+          className="flex items-center justify-center !rounded-[27px] min-h-auto !h-auto !min-h-auto"
+        >
+          <ModalContent className="w-full max-w-7xl 2xl:p-10 md:p-5 p-0">
+            <ModalBody className="bg-white !w-[90vw] !rounded-[27px] max-w-7xl">
+              {selectedProduct && <EasyProduct product={selectedProduct} />}
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </FollowerPointerCard>
+    </div>
+  );
+}
+const blogContent = {
+  slug: "amazing-tailwindcss-grid-layouts",
+  author: "Manu Arora",
+  date: "28th March, 2023",
+  title: "Amazing Tailwindcss Grid Layout Examples",
+  description:
+    "Grids are cool, but Tailwindcss grids are cooler. In this article, we will learn how to create amazing Grid layouts with Tailwindcss grid and React.",
+  image: "/images/24c1dd94a78c0b8aee23aa767051e8fd.png",
+  authorAvatar: "/images/24c1dd94a78c0b8aee23aa767051e8fd.png",
+};
+
+const TitleComponent = ({ title, avatar }) => (
+  <div className="flex space-x-2 items-center">
+    <Image
+      src="/images/24c1dd94a78c0b8aee23aa767051e8fd.png"
+      height={20}
+      width={20}
+      alt="thumbnail"
+      className="rounded-full border-2 border-white"
+    />
+    <p>{title}</p>
+  </div>
+);

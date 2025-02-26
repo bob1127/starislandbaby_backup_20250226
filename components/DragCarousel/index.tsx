@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, type PanInfo } from "framer-motion";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useEffect } from "react";
-
+import Image from "next/image.js";
 import { cn } from "../../lib/utils.js";
 
 const START_INDEX = 1;
@@ -184,29 +184,18 @@ export default function SuggestedCarousel() {
   }
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const font = new FontFace(
-      "ResourceHanRoundedCN-Heavy",
-      "url(/fonts/ResourceHanRoundedCN-Heavy.ttf)"
-    );
-
-    font
-      .load()
-      .then((loadedFont) => {
-        document.fonts.add(loadedFont);
-        if (carouselRef.current) {
-          carouselRef.current.style.fontFamily =
-            "ResourceHanRoundedCN-Heavy, sans-serif";
-        }
-      })
-      .catch((error) => {
-        console.log("字體加載失敗:", error);
-      });
-  }, []);
   return (
     <>
       <div ref={carouselRef} className="flex justify-center">
-        <h1 className="text-[7vmin] 2xl:text-[90px] my-10">HAVE NICE DAY</h1>
+        <Image
+          src="/images/S__4972558.jpg"
+          placeholder="empty"
+          loading="lazy"
+          className="mx-auto mt-10 max-w-[700px]"
+          width={700}
+          height={300}
+          alt="have_nice_day"
+        ></Image>
       </div>
       <div className="group container ">
         <motion.div

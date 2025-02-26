@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Card, CardBody } from "@nextui-org/react";
 import Link from "next/link";
 import "aos/dist/aos.css";
 import Image from "next/image";
+
 async function fetchAllProducts() {
   try {
     const productUrl = `${process.env.NEXT_PUBLIC_WP_API_BASE_URL}wp-json/wc/v3/products?consumer_key=${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}&consumer_secret=${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}`;
@@ -22,6 +23,7 @@ export default function ProductGrid() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const titleRef = useRef(null);
   const productsPerPage = 8;
 
   useEffect(() => {
@@ -35,6 +37,26 @@ export default function ProductGrid() {
     };
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const font = new FontFace(
+      "WangZheGuiLai",
+      "url(/fonts/王者歸來-華康海報體W12.ttf)"
+    );
+
+    font
+      .load()
+      .then((loadedFont) => {
+        document.fonts.add(loadedFont);
+        if (titleRef.current) {
+          titleRef.current.style.fontFamily = "WangZheGuiLai, sans-serif";
+          titleRef.current.style.fontWeight = "bold"; // 加粗
+        }
+      })
+      .catch((error) => {
+        console.error("字體加載失敗:", error);
+      });
   }, []);
 
   if (loading) {
@@ -55,8 +77,16 @@ export default function ProductGrid() {
 
   return (
     <div className="container w-[75%] flex flex-col mx-auto py-1 px-4">
-      <div className="txt">
-        <h2 className="text-[7vmin]">嬰幼兒-Infants</h2>
+      <div className="txt text-center">
+        <Image
+          src="/images/S__4972553.jpg"
+          placeholder="empty"
+          loading="lazy"
+          className="mx-auto max-w-[700px]"
+          width={700}
+          height={300}
+          alt="for_kid_title"
+        ></Image>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {currentProducts.map((product) => (
@@ -87,7 +117,7 @@ export default function ProductGrid() {
       {/* Pagination Controls */}
       <div className="flex justify-center mt-6 space-x-2">
         <button
-          className="px-4 py-2 rotate-180  rounded-lg disabled:opacity-50"
+          className="px-4 py-2 rotate-180 rounded-lg disabled:opacity-50"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
@@ -98,13 +128,13 @@ export default function ProductGrid() {
             width={50}
             height={50}
             alt="arrow"
-          ></Image>
+          />
         </button>
         <span className="px-4 py-2">
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className="px-4 py-2  rounded-lg disabled:opacity-50"
+          className="px-4 py-2 rounded-lg disabled:opacity-50"
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
@@ -117,7 +147,7 @@ export default function ProductGrid() {
             width={50}
             height={50}
             alt="arrow"
-          ></Image>
+          />
         </button>
       </div>
     </div>

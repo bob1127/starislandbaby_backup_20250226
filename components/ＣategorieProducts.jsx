@@ -55,8 +55,16 @@ export default function ProductGrid() {
 
   return (
     <div className="container w-[75%] flex flex-col mx-auto py-1 px-4">
-      <div className="txt">
-        <h2 className="text-[7vmin]">配件 - Categories</h2>
+      <div className="txt text-center">
+        <Image
+          src="/images/S__4972561.jpg"
+          placeholder="empty"
+          loading="lazy"
+          className="mx-auto max-w-[700px]"
+          width={700}
+          height={300}
+          alt="for_kid_title"
+        ></Image>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {currentProducts.map((product) => (

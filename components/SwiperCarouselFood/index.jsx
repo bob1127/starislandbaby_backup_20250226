@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-
+import Link from "next/link";
 const video = [""];
 const imgs = ["/images/S__4677656.png"];
 
@@ -48,7 +48,7 @@ export default () => {
   };
 
   return (
-    <div className="relative mx-auto w-full sm:w-[80%] xl:w-[75%]  mt-[50px] md:mt-[100px] 2xl:mt-[50px] overflow-hidden  py-8">
+    <div className="relative mx-auto w-full sm:w-[80%] xl:w-[75%]  mt-[20px] md:mt-[100px] 2xl:mt-[50px] overflow-hidden  py-0">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -101,7 +101,7 @@ const Images = ({ imgIndex }) => {
 
 const Dots = ({ imgIndex, setImgIndex }) => {
   return (
-    <div className="mt-4 flex w-full justify-center gap-2 ">
+    <a href="/qa" className="mt-4 flex w-full justify-center gap-2 ">
       {imgs.map((_, idx) => {
         return (
           <button
@@ -113,7 +113,7 @@ const Dots = ({ imgIndex, setImgIndex }) => {
           />
         );
       })}
-    </div>
+    </a>
   );
 };
 

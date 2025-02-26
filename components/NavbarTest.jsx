@@ -75,73 +75,107 @@ const Navbar = () => {
     if (subCategories.length === 0) return null;
 
     return (
-      <ul className="flex flex-col text-white justify-center space-y-2 pl-4">
-        {subCategories.map((category) => (
-          <li className="flex text-white" key={category.id}>
-            <Link
-              href={`/category/${category.slug}`}
-              className="text-black mt-4"
-            >
-              {category.name}
-            </Link>
-            {renderCategories(category.id)}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul className="flex flex-col text-white justify-center space-y-2 pl-4">
+          {subCategories.map((category) => (
+            <li className="flex text-white" key={category.id}>
+              <Link
+                href={`/category/${category.slug}`}
+                className="text-black mt-4"
+              >
+                {category.name}
+              </Link>
+
+              {renderCategories(category.id)}
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   };
 
   return (
-    <nav className="flex mx-auto justify-center">
-      <ul className="flex space-x-8 mx-auto justify-center relative">
-        {isValidating && localCategories.length === 0 ? (
-          <div className="text-gray-500"></div>
-        ) : (
-          sortedCategories
-            .filter((category) => category.parent === 0)
-            .map((category) => {
-              const hasSubCategories = sortedCategories.some(
-                (cat) => cat.parent === category.id
-              );
+    <div className="flex justify-center  mx-auto">
+      <nav className="flex mx-auto  justify-center">
+        <ul className="flex  space-x-8 mx-auto justify-center relative">
+          {isValidating && localCategories.length === 0 ? (
+            <div className="text-gray-500"></div>
+          ) : (
+            sortedCategories
+              .filter((category) => category.parent === 0)
+              .map((category) => {
+                const hasSubCategories = sortedCategories.some(
+                  (cat) => cat.parent === category.id
+                );
 
-              return (
-                <li
-                  key={category.id}
-                  className="relative text-gray-300 py-5 hover:text-white duration-150 text-[14px] font-bold"
-                  onMouseEnter={() => setActiveCategory(category.id)}
-                  onMouseLeave={() => setActiveCategory(null)}
-                >
-                  <button className="flex items-center gap-0">
-                    <Link href={`/category/${category.slug}`}>
-                      {category.name}
-                    </Link>
-                    {hasSubCategories && (
-                      <span className="ml-2">
-                        {activeCategory === category.id ? (
-                          <FiChevronUp />
-                        ) : (
-                          <FiChevronDown />
-                        )}
-                      </span>
-                    )}
-                  </button>
-                  {activeCategory === category.id && hasSubCategories && (
-                    <motion.div
-                      className="absolute top-10 left-0 w-max bg-white duration-200 tracking-widest mt-2 py-8 font-medium rounded-xl pl-5 pr-[80px] shadow-lg z-10"
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
+                return (
+                  <div className="flex ">
+                    <li
+                      key={category.id}
+                      className="relative text-gray-300 py-5 hover:text-white duration-150 text-[14px] font-bold"
+                      onMouseEnter={() => setActiveCategory(category.id)}
+                      onMouseLeave={() => setActiveCategory(null)}
                     >
-                      {renderCategories(category.id)}
-                    </motion.div>
-                  )}
-                </li>
-              );
-            })
-        )}
-      </ul>
-    </nav>
+                      <button className="flex items-center gap-0">
+                        <Link href={`/category/${category.slug}`}>
+                          {category.name}
+                        </Link>
+
+                        {hasSubCategories && (
+                          <span className="ml-2">
+                            {activeCategory === category.id ? (
+                              <FiChevronUp />
+                            ) : (
+                              <FiChevronDown />
+                            )}
+                          </span>
+                        )}
+                      </button>
+                      {activeCategory === category.id && hasSubCategories && (
+                        <motion.div
+                          className="absolute top-10 left-0 w-max bg-white duration-200 tracking-widest mt-2 py-8 font-medium rounded-xl pl-5 pr-[80px] shadow-lg z-10"
+                          initial={{ opacity: 0, y: -20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {renderCategories(category.id)}
+                        </motion.div>
+                      )}
+                    </li>
+                  </div>
+                );
+              })
+          )}
+        </ul>
+      </nav>
+      <div className="flex ml-5 flex-row justify-center items-center">
+        <Link
+          href="/gift"
+          className="text-[#d1d5db] font-extrabold ml-4 text-[14px]"
+        >
+          送禮專區
+        </Link>
+        <Link
+          href="/qa"
+          className="text-[#d1d5db] font-extrabold ml-10 text-[14px]"
+        >
+          購物說明
+        </Link>
+        <Link
+          href="/about"
+          className="ml-10 text-[#d1d5db] font-extrabold text-[14px]"
+        >
+          關於我們
+        </Link>
+        <Link
+          href="/size"
+          className="ml-10 text-[#d1d5db] font-extrabold text-[14px]"
+        >
+          尺寸參考
+        </Link>
+      </div>
+    </div>
   );
 };
 

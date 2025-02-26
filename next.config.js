@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  
   images: {
     domains: ['starislandbaby.com'], // 加入你使用的外部圖片域名
   },

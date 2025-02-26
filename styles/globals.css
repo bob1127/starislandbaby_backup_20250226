@@ -8,7 +8,12 @@
   font-style: normal;
 }
 
-
+@font-face {
+  font-family: "WangZheGuiLai";
+  src: url("/fonts/王者歸來-華康海報體W12.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: "ResourceHanRoundedCN-Heavy";
   src: url("/fonts/ResourceHanRoundedCN-Heavy.woff2") format("woff2"),
@@ -17,7 +22,10 @@
   font-style: normal;
   font-display: swap;
 }
- 
+ .custom-modal .custom-modal-content {
+  width: 70vw !important;
+  max-width: 70vw !important;
+}
 .backdrop-blur-lg{
   --tw-backdrop-blur: blur(0)!important;
 }

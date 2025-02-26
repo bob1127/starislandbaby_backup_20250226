@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 // import Preloader from "../components/toys05/Preloader";
 import Layout from "./Layout.js";
 import Link from "next/link";
+import SwiperCard from "../components/SwiperCarousel/SwiperCardTravel.jsx";
 
+import Carousel from "../components/SmallChildrenProducts.jsx";
 // import SidebarNav from "../components/SideBar.jsx";
 // import Landing from "../components/toys05/Landing";
 // import Projects from "../components/toys05/Projects";
@@ -19,7 +21,6 @@ import EmblaCarousel from "../components/EmblaCarouselToys/index.jsx";
 import PopupAd from "../components/PopupAd.jsx";
 // import Double from "../components/two-colum/Double.jsx";
 
-import SwiperCard from "../components/SwiperCarousel/SwiperCardTravel.jsx";
 import SwiperCarouselHero from "../components/SwiperCarouselFood/index.jsx";
 // import {
 //   Dropdown,
@@ -56,20 +57,19 @@ export default function Home() {
       <div className="bg-[#e0d5c8] px-4 md:px-10">
         <div className="w-full xl:w-[800px] pt-[200px] mx-auto">
           <Image
-            src="/images/S__4767762.jpg"
+            src="/images/S__4972546.png"
             placeholder="empty"
             loading="lazy"
-            className="mb-[80px]"
+            className=""
             width={800}
             height={600}
           ></Image>
-          <Image
-            src="/images/S__4751386.png"
-            placeholder="empty"
-            loading="lazy"
-            width={800}
-            height={1400}
-          ></Image>
+        </div>
+
+        <div className="left  px-[100px] border-green">
+          <div className="bg-[#e0d5c8] ">
+            <SwiperCard />
+          </div>
         </div>
       </div>
     </Layout>

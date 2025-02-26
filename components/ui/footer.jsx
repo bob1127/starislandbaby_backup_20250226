@@ -19,7 +19,7 @@ export default function Footer() {
     <div className="block">
       <footer className="md:py-[80px] py-[20px] 2xl:py-[50px] lg:pb-[50px] lg:pt-[30px] w-full px-[15px] md:px-[30px] lg:px-[90px]  2xl:px-[200px] bg-[#e0d5c8]  flex-col items-center  flex justify-center">
         <div className="top-section p-[30px] lg:p-[10px] w-full md:w-1/2 2xl:pr-[100px]">
-          <div className="link-button-wrap flex flex-wrap mx-auto w-full  justify-center ">
+          <div className="link-button-wrap flex flex-wrap mx-auto max-w-[530px]  justify-center ">
             <Image
               placeholder="empty"
               alt="soke"

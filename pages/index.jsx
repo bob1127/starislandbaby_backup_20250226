@@ -7,7 +7,6 @@ import Layout from "./Layout.js";
 import Link from "next/link";
 import BabyProducts from "@/components/BabyProducts";
 import CategoriesProducts from "@/components/ＣategorieProducts";
-
 import SmallChildrenProducts from "@/components/SmallChildrenProducts"; // 引入你的新組件
 // import SidebarNav from "../components/SideBar.jsx";
 // import Landing from "../components/toys05/Landing";
@@ -97,10 +96,13 @@ export default function Home() {
   return (
     <Layout>
       <div className="bg-[#e0d5c8] ">
-        <div className="section-hero px-0 sm:px-[30px] md:px-[80px] xl:px-[200px] pb-[50px]  md:pb-[100px] pt-[150px] md:pt-[220px] xl:pt-[300px]">
+        <div
+          data-aos="fade-up"
+          className="section-hero px-0 sm:px-[30px] md:px-[80px] xl:px-[200px] pb-[20px]  md:pb-[100px] pt-[100px] md:pt-[220px] xl:pt-[300px]"
+        >
           <Image
             width={1920}
-            src="/images/S__4800521.jpg"
+            src="/images/S__4915214.jpg"
             height={658}
             placeholder="empty"
             className="rounded-none md:rounded-[20px] xl:rounded-[50px]"
@@ -121,9 +123,10 @@ export default function Home() {
             />
             Your browser does not support the video tag.
           </video> */}
-        </div>
+        </div>{" "}
+        <div className="fixed left-0 z-[999999]"> </div>
         {/* <SmallChildrenProducts /> */}
-        <section className="section_main_category mt-[20px] 2xl:mt-[50px] ">
+        <section className="section_main_category mt-[20px] 2xl:mt-[0px] ">
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 w-[80%] mx-auto">
             <div className="hover:scale-105 hover:rotate-6 duration-300">
               <Link href="/images/LINE_ALBUM_2025211_250212_1-removebg-preview.png">
@@ -182,19 +185,17 @@ export default function Home() {
         >
           <SwiperCarouselHero />
         </section>
-
-        <div className="mt-10">
+        <div className="mt-3">
           <SmallChildrenProducts />
         </div>
-        <div className="mt-10">
+        <div className="mt-3">
           {" "}
           <BabyProducts />
         </div>
-        <div className="mt-10">
+        <div className="mt-3">
           {" "}
           <CategoriesProducts />
         </div>
-
         <main className=" px-0 lg:px-[100px]  2xl:px-[220px] relative">
           {/* <PopupAd /> */}
           {/* <AnimatePresence mode="wait">
@@ -203,7 +204,7 @@ export default function Home() {
 
           <section
             data-aos="fade-up"
-            className="section_banner py-[100px] flex  flex-col lg:flex-row"
+            className="section_banner py-[20px] xl:py-[100px] flex  flex-col lg:flex-row"
           >
             <div className=" w-full lg:w-1/2 flex p-5 justify-center items-center">
               <Link href="/category/skirt-small-children" className="w-full">
@@ -236,6 +237,7 @@ export default function Home() {
           <section className="section-littleChildren">
             <div className="grid grid-cols-5 gap-2  "></div>
           </section>
+
           <div className="left  px-5 border-green">
             <div className="bg-[#e0d5c8] ">
               <SwiperCard />
@@ -424,103 +426,98 @@ export default function Home() {
           <Tabs />
 
         </section> */}
-          <section className="flex flex-col py-[50px]  my-5">
-            <div>
-              <h2 data-aos="fade-up" className="text-[7vmin]">
-                夏天即將來臨！
-              </h2>
-              <p
-                data-aos="fade-up"
-                className="text-[14px] mt-4 w-[80%] text-center mx-auto"
-              >
-                對於初夏到盛夏的童裝，最重要的是在炎熱的季節裡功能性和舒適性，例如容易調節體溫和防水。
-                當然，設計要符合大人小孩的喜好、價格合理也很重要。 B:Ming by
-                BEAMS 和 BEAMS MINI 的童裝可以滿足爸爸媽媽們所有這些願望。
-                本期我們將介紹最適合夏季出遊的單品和最佳裝束，如露營、海灘和公園。
-                今年夏天將會非常炎熱，但不要讓烈日阻擋您享受時尚的步伐 ♡
-                HAMBURGER SHOP CAMP SEA TRAVEL
-              </p>
+          <section className="flex flex-col   my-5">
+            <div className="flex justify-center items-center flex-col">
+              <Image
+                src="/images/S__4972556.jpg"
+                placeholder="empty"
+                loading="lazy"
+                className="mx-auto mt-10 max-w-[700px]"
+                width={700}
+                height={300}
+                alt="summer_comming_title"
+              ></Image>
             </div>
             <Marquee className="h-[420px]">
               <div className="flex ">
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_7.png"
+                    src="/images/marquee_01.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_2.png"
+                    src="/images/marquee_02.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_8.png"
+                    src="/images/marquee_03.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_6.png"
+                    src="/images/marquee_04.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_5.png"
+                    src="/images/marquee_05.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_4.png"
+                    src="/images/marquee_06.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_3.png"
+                    src="/images/marquee_07.webp"
                   ></Image>
                 </div>
-                <div className="w-[250px] mx-3 border-3 rounded-xl border-white">
+                <div className="w-[250px] mx-3 border-3 rounded-xl border-white hover:mb-5 duration-400">
                   <Image
                     width={300}
                     height={400}
                     placeholder="empty"
                     className="m-2 rounded-xl"
                     alt="marquee-img"
-                    src="/images/l_1.png"
+                    src="/images/marquee_03.webp"
                   ></Image>
                 </div>
               </div>
@@ -550,9 +547,18 @@ export default function Home() {
             />
           </section>
 
-          <section className="section_DragCarousel pb-10 mt-[100px] bg-[#e0d5c8]">
+          <section className="section_DragCarousel pb-10 mt-[20px] xl:mt-[100px] bg-[#e0d5c8]">
             <DragCarousel />
           </section>
+          <div className="flex justify-center">
+            <Image
+              src="/images/S__4972562.jpg"
+              width={500}
+              height={240}
+              className="w-[650px]"
+              placeholder="empty"
+            ></Image>
+          </div>
         </main>
       </div>
     </Layout>
