@@ -86,31 +86,45 @@ const Navbar = () => {
 
   return (
     <nav className="relative overflow-x-scroll scrollbar-none scrollbar-hidden">
-      <ul className="flex flex-row  lg:flex-col space-y-4">
+      <ul className="flex flex-row lg:flex-col space-y-4">
         {categories.length > 0 ? (
           categories
             .filter((category) => category.parent === 0)
-            .map((category) => (
-              <li
-                key={category.id}
-                className={`relative lg:bg-transparent rounded-full p-1 h duration-150 pr-3 inline-block w-[180px] mx-2 group`}
-              >
-                <button
-                  onClick={() => toggleSubcategories(category.id)}
-                  className=" py-1 rounded-full px-3 flex justify-center w-full  text-center   lg:w-auto lg:bg-transparent font-bold bg-white "
-                  disabled={isMobile}
+            .map((category) => {
+              const subCategories = categories.filter(
+                (subCat) => subCat.parent === category.id
+              );
+              const hasSubcategories = subCategories.length > 0;
+
+              return (
+                <li
+                  key={category.id}
+                  className={`relative lg:bg-transparent rounded-full p-1 h duration-150 pr-3 inline-block w-[180px] mx-2 group`}
                 >
-                  <Link href={`/category/${category.slug}`} passHref>
-                    <span className="whitespace-nowrap text-[18px] group-hover:gray-900 font-bold">
+                  <button
+                    onClick={() => toggleSubcategories(category.id)}
+                    className="py-1 rounded-full px-3 flex justify-between w-full text-center lg:w-auto lg:bg-transparent font-bold bg-white"
+                    disabled={isMobile}
+                  >
+                    <span className="whitespace-nowrap text-[18px] group-hover:text-gray-900 font-bold">
                       {category.name}
                     </span>
-                  </Link>
-                </button>
-                {activeCategory === category.id && (
-                  <div className="mt-2">{renderCategories(category.id)}</div>
-                )}
-              </li>
-            ))
+                    {hasSubcategories && (
+                      <span className="ml-2">
+                        {activeCategory === category.id ? (
+                          <FiChevronUp size={18} />
+                        ) : (
+                          <FiChevronDown size={18} />
+                        )}
+                      </span>
+                    )}
+                  </button>
+                  {activeCategory === category.id && (
+                    <div className="mt-2">{renderCategories(category.id)}</div>
+                  )}
+                </li>
+              );
+            })
         ) : (
           <li className="px-3 py-2 text-gray-500"></li>
         )}

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 // import { AnimatePresence } from "framer-motion";
 // import Preloader from "../components/toys05/Preloader";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+
 import Layout from "./Layout.js";
 import Link from "next/link";
 import BabyProducts from "@/components/BabyProducts";
@@ -93,6 +95,43 @@ export default function Home() {
         console.log("字體加載失敗:", error);
       });
   }, []);
+  const testimonials = [
+    {
+      quote:
+        "春天輕盈柔軟，讓寶貝自在探索；夏日涼爽透氣，盡情玩耍不悶熱；秋季層次搭配，既保暖又時尚；冬日蓬鬆可愛，溫暖包裹每個童年時光。每個季節都有不同的美好，為孩子選擇合適的穿搭，讓他們自在奔跑，開心成長。無論晴天還是雨天，都能擁有專屬童年的時尚魅力！",
+      name: "四季童趣穿搭，陪伴孩子快樂成長！",
+      designation: "Product Manager at TechFlow",
+      src: "/images/img01.jpg",
+    },
+    {
+      quote:
+        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+      name: "Michael Rodriguez",
+      designation: "CTO at InnovateSphere",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+      name: "Emily Watson",
+      designation: "Operations Director at CloudScale",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+      name: "James Kim",
+      designation: "Engineering Lead at DataPro",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Lisa Thompson",
+      designation: "VP of Technology at FutureNet",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
   return (
     <Layout>
       <div className="bg-[#e0d5c8] ">
@@ -537,7 +576,7 @@ export default function Home() {
           </section> */}
           <section className="section_banner px-5 ">
             <Image
-              src="/images/S__4644870.jpg"
+              src="/images/O1CN01S7LQ011LrijuVOdGC_!!3480251353-0-cib.jpg"
               placeholder="empty"
               alt="banner"
               loading="lazy"
@@ -545,6 +584,11 @@ export default function Home() {
               width="1800"
               height="700"
             />
+          </section>
+          <section>
+            <div className="flex ">
+              <AnimatedTestimonials testimonials={testimonials} />
+            </div>
           </section>
 
           <section className="section_DragCarousel pb-10 mt-[20px] xl:mt-[100px] bg-[#e0d5c8]">

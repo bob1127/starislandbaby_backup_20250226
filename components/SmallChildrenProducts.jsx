@@ -65,9 +65,10 @@ export default function ProductGrid() {
   );
 
   return (
-    <div className="container w-[75%] flex flex-col mx-auto py-1 px-4">
+    <div className="container w-full 2xl:w-[85%] flex flex-col mx-auto py-1 px-4">
       <Image
-        src="/images/for_kids_title.jpg"
+        data-aos="zoom-in"
+        src="/images/for_kids.jpg"
         placeholder="empty"
         loading="lazy"
         className="mx-auto max-w-[700px]"
@@ -83,6 +84,7 @@ export default function ProductGrid() {
       {/* Pagination Controls */}
       {totalPages > 1 && (
         <div className="flex justify-center mt-6 space-x-2">
+          {/* Previous Page Button */}
           <button
             className="px-4 py-2 rotate-180 rounded-lg disabled:opacity-50"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -91,13 +93,32 @@ export default function ProductGrid() {
             <Image
               src="/images/right-arrow.png"
               width={50}
+              className="xl:w-[50px] w-[40px]"
               height={50}
               alt="arrow"
+              placeholder="empty"
+              loading="lazy"
             />
           </button>
-          <span className="px-4 py-2">
-            Page {currentPage} of {totalPages}
-          </span>
+
+          {/* Page Numbers */}
+          <div className="flex space-x-2">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`px-4 py-2 border w-[45px] h-[45px] !rounded-xl transition duration-200 ${
+                  currentPage === index + 1
+                    ? "bg-gray-300 text-black" // Current page has gray background
+                    : "bg-white text-black hover:bg-gray-200"
+                }`}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+
+          {/* Next Page Button */}
           <button
             className="px-4 py-2 rounded-lg disabled:opacity-50"
             onClick={() =>
@@ -108,8 +129,11 @@ export default function ProductGrid() {
             <Image
               src="/images/right-arrow.png"
               width={50}
+              className="xl:w-[50px] w-[40px]"
               height={50}
               alt="arrow"
+              placeholder="empty"
+              loading="lazy"
             />
           </button>
         </div>
@@ -131,12 +155,17 @@ function ProductCard({ product }) {
   return (
     <div className="group block ">
       <FollowerPointerCard
-        title={<b>{product.name}</b>}
-        avatar={blogContent.authorAvatar}
+        title={
+          <TitleComponent
+            className="!text-[12px]"
+            title={product.name}
+            avatar={blogContent.authorAvatar}
+          />
+        }
       >
         <Button
           onPress={handleOpen}
-          className="w-full p-2 !bg-transparent h-full"
+          className="w-full p-2 !bg-transparent h-full !focus:outline-none !cursor-default"
         >
           <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
             <div className="w-full aspect-w-16 aspect-h-10 bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
@@ -159,6 +188,7 @@ function ProductCard({ product }) {
             </div>
           </div>
         </Button>
+
         <Modal
           isOpen={isOpen}
           onOpenChange={onOpenChange}
@@ -177,7 +207,7 @@ function ProductCard({ product }) {
 }
 const blogContent = {
   slug: "amazing-tailwindcss-grid-layouts",
-  author: "Manu Arora",
+  author: "BUY NOW",
   date: "28th March, 2023",
   title: "Amazing Tailwindcss Grid Layout Examples",
   description:

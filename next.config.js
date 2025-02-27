@@ -2,8 +2,13 @@ const path = require("path");
 
 module.exports = {
   
-  images: {
-    domains: ['starislandbaby.com'], // 加入你使用的外部圖片域名
+ images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   trailingSlash: true, // 設置路由結尾添加斜線
   webpackDevMiddleware: (config) => {

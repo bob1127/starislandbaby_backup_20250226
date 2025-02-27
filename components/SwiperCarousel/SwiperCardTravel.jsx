@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link"; // Import Link for internal navigation
 import "aos/dist/aos.css";
-
+import Image from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -51,6 +51,16 @@ export default function ProductCarousel() {
 
   return (
     <>
+      {/* <div>
+        <Image
+          src="/images/"
+          width={700}
+          height={300}
+          placeholder="empty"
+          loading="lazy"
+          alt="for_HotSale_title"
+        ></Image>
+      </div> */}
       <div className="e-full m-0 py-5 xl:py-[100px]">
         <Swiper
           breakpoints={{

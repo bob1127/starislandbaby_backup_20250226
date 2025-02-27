@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useCart } from "../../components/context/CartContext";
 import Layout from "../Layout";
 // Swiper imports
+
 import {
   Modal,
   ModalContent,
@@ -224,8 +225,11 @@ const ProductPage = ({ product }) => {
         />
       </Head>
 
-      <div className="flex flex-col items-center px-[200px]" data-aos="fade-up">
-        <div className="product_top_info px-[20px] sm:px-[50px] xl:px-[100px] pt-[140px] sm:pt-[200px] xl:pt-[250px]">
+      <div
+        className="flex flex-col items-center border-3 border-black  mx-auto sm:px-[50px] lg:px-[20px] 2xl:px-[200px]"
+        data-aos="fade-up"
+      >
+        <div className="product_top_info w-full px-[20px] sm:px-[50px] xl:px-[100px] pt-[140px] sm:pt-[200px] xl:pt-[200px]">
           <div className="flex lg:flex-row flex-col justify-center items-center">
             <div className="w-full lg:w-1/2 p-2 lg:p-8 flex-col mx-auto flex justify-center items-center">
               {/* Main Image Swiper */}
@@ -323,7 +327,7 @@ const ProductPage = ({ product }) => {
                   </Button>
                   <Modal
                     isOpen={isOpen}
-                    className=" !z-[999999999] bg-white !mt-[10%]"
+                    className=" !z-[999999999] bg-white overflow-scroll !static !mt-[28%]"
                     onOpenChange={onOpenChange}
                   >
                     <ModalContent>
@@ -333,10 +337,14 @@ const ProductPage = ({ product }) => {
                             尺寸表
                           </ModalHeader>
                           <ModalBody>
-                            <img
-                              className="w-[200px]"
+                            <Image
+                              width={500}
+                              height={700}
+                              className=""
                               src="/images/S__4751370.jpg"
-                              alt=""
+                              alt="尺寸表"
+                              placeholder="empty"
+                              loading="lazy"
                             />
                           </ModalBody>
                           <ModalFooter></ModalFooter>
@@ -404,7 +412,7 @@ const ProductPage = ({ product }) => {
                 <div className="mt-6 rounded-full">
                   <label
                     htmlFor="quantity"
-                    className="text-sm  font-medium text-gray-700"
+                    className="text-md  font-bold text-gray-700"
                   >
                     購買數量：
                   </label>
@@ -434,9 +442,22 @@ const ProductPage = ({ product }) => {
                     </button>
                   </div>
                 </div>
-                <button onClick={handleAddToCart}>添加至購物車</button>
+                <div className="total-price text-md mt-4">
+                  金額總計: ${totalPrice}
+                </div>
+                <button
+                  onClick={handleAddToCart}
+                  class="group mt-5 relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-white font-medium"
+                >
+                  <div class="inline-flex h-12 translate-y-0 items-center justify-center px-6 text-neutral-950 transition duration-500 group-hover:-translate-y-[150%]">
+                    立即購買
+                  </div>
 
-                <div className="total-price mt-4">金額總計: ${totalPrice}</div>
+                  <div class="absolute inline-flex h-12 w-full translate-y-[100%] items-center justify-center text-neutral-50 transition duration-500 group-hover:translate-y-0">
+                    <span class="absolute h-full w-full translate-y-full skew-y-12 scale-y-0 bg-[#B4746B] text-white transition duration-500 group-hover:translate-y-0 group-hover:scale-150"></span>
+                    <span class="z-10 text-white">添加至購物車</span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -470,8 +491,10 @@ const ProductPage = ({ product }) => {
             </Tab>
           </Tabs>
         </div>
+
         {/* Render Product Description with custom Image handling */}
       </div>
+      {/* <Lens /> */}
     </Layout>
   );
 };

@@ -20,7 +20,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className=" top-2 left-0 w-full  shadow-md  z-50">
+    <div className=" top-2 left-0 w-full  z-50">
       <a
         href="/"
         className="Logo rounded-[50px] mx-auto block py-2 text-center text-[30px] font-extrabold px-3 text-black"

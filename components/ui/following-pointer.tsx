@@ -70,14 +70,15 @@ export const FollowPointer = ({
   title?: string | React.ReactNode;
 }) => {
   const colors = [
-    "var(--sky-500)",
-    "var(--neutral-500)",
-    "var(--teal-500)",
-    "var(--green-500)",
-    "var(--blue-500)",
-    "var(--red-500)",
-    "var(--yellow-500)",
+    "#D6C38B",
+    "#91A0A5",
+    "#E6D6D9",
+    "#B0B1B6",
+    "#A79A89",
+    "#D89C7A",
+    "#9FABB9",
   ];
+
   return (
     <motion.div
       className="h-4 w-4 rounded-full absolute z-50"

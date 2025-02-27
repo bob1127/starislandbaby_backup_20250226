@@ -1,6 +1,7 @@
 // Import necessary modules and components
 
 "use client";
+
 import React, { useRef, useState } from "react";
 import {
   Navbar,
@@ -24,7 +25,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
-
+import Icons from "./icons.jsx";
 // import MobileMenu from "../mobileMenu/index.jsx";
 import Marquee from "react-fast-marquee";
 import DropDown from "../../components/DropdownMenu.jsx";
@@ -47,8 +48,33 @@ export const SlideTabsExample = () => {
 
   return (
     <>
-      <div className="top-0 mt-[-40px]  pt-8 pb-2 flex mx-auto left-[40%]   justify-center bg-white flex-col items-center fixed  w-[100%] z-[999999]">
-        <div className="top px-2 sm:px-10  lg:bg-[#fff] flex justify-center items-center w-full py-1">
+      <div className="top-0 mt-[-40px]  pt-8  flex mx-auto left-[40%]   justify-center bg-white flex-col items-center fixed  w-[100%] z-[999999]">
+        <div className="flex bg-[#91AD9E] h-16 items-center py-3 w-[100vw] sm:hidden pt-4 pb-2 justify-center">
+          <Swiper
+            direction="vertical"
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            loop={true}
+            className="h-[20px]  justify-center flex items-center"
+            modules={[Autoplay]}
+          >
+            <SwiperSlide className="flex justify-center">
+              <div className="text-center text-white text-[14.5px]">
+                全館單筆消費|滿999享單次超取免運
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="flex justify-center">
+              <div className="text-center text-white text-[14.5px]">
+                點我加入官方line
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="flex justify-center">
+              <div className="text-center text-white text-[14.5px]">
+                當月小壽星|快來領生日禮🎂
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="top px-2 sm:px-10 bg-[#c3c3c3]  lg:bg-[#fff] flex justify-center items-center w-full py-1">
           <div className=" hidden w-1/2 sm:w-[15%]  sm:flex justify-center">
             <Logo />
           </div>
@@ -149,7 +175,8 @@ export const SlideTabsExample = () => {
           </div>
           <div className="Logo-section pr-8   flex justify-center items-center w-[10%] ">
             <div className="icon-wrap hidden lg:flex  pr-[30px]  items-center">
-              <Link
+              <Icons />
+              {/* <Link
                 href="https://www.facebook.com/profile.php?id=61569146001285"
                 className="w-[22px] h-[22px] mx-1"
               >
@@ -217,7 +244,7 @@ export const SlideTabsExample = () => {
                   width={16}
                   height={16}
                 ></Image>
-              </Link>
+              </Link> */}
             </div>
             <div className="top-0  hidden right-3 left-auto z-[999999999] sm:block lg:hidden fixed w-[100vw]">
               <div className="absolute right-0  top-5">
@@ -226,7 +253,7 @@ export const SlideTabsExample = () => {
             </div>
           </div>
         </div>
-        <div className="bottom   bg-[#676662] w-full hidden lg:flex justify-center  items-center">
+        <div className="bottom   bg-[#91AD9E] w-full hidden lg:flex justify-center  items-center">
           <div className="marquee fixed bg-white notice-modal mx-auto w-[100vw] rounded-[5px] py-1   flex flex-row p-1 bg-whote  justify-center top-0">
             {/* <div className="flex justify-center">
               <Marquee>
@@ -238,7 +265,7 @@ export const SlideTabsExample = () => {
           </div>
           <div className="Logo-section w-1/2 sm:w-[10%]  flex justify-center"></div>
           <div className="mobile-menu block sm:hidden w-1/2"></div>
-          <div className="Logo-section  sm:block flex  mx-auto   flex-row  w-[100%] xl:w-[80%] ">
+          <div className="Logo-section  sm:block flex  mx-auto   flex-row  w-[100%] xl:w-[95%] ">
             <div className="flex flex-row">
               <Navbar01 />
             </div>

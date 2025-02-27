@@ -24,6 +24,7 @@
     "@react-three/fiber": "^8.15.11",
     "@studio-freight/lenis": "^1.0.28",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@tabler/icons-react": "^3.30.0",
     "@tailwindcss/postcss": "^4.0.8",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
