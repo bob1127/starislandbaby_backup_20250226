@@ -13,6 +13,11 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
+
+    // 如果购物车不为空，自动打开侧边栏
+    if (storedCartItems.length > 0) {
+      setIsOpen(true);
+    }
   }, []);
 
   // 每次 cartItems 更新时重新计算总价
@@ -25,17 +30,6 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   // 在 cartItems 发生变化时，确保侧边栏在有商品时自动打开
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      setIsOpen(true); // 购物车不为空时，打开侧边栏
-      console.log("购物车有商品，打开侧边栏");
-    } else {
-      setIsOpen(false); // 购物车为空时，关闭侧边栏
-      console.log("购物车为空，关闭侧边栏");
-    }
-  }, [cartItems]); // 依赖 cartItems，只有在购物车内容更新时触发
-
-  // 添加商品到购物车
   const addToCart = (product) => {
     console.log("添加商品到购物车:", product);
     if (!product.color || !product.size) {
@@ -67,9 +61,10 @@ export const CartProvider = ({ children }) => {
       setCartItems((prevItems) => [...prevItems, product]);
     }
 
-    // 购物车有商品时打开侧边栏
+    // 添加商品到购物车后，直接打开侧边栏
     setIsOpen(true);
     console.log("商品已添加，侧边栏已打开");
+    console.log("当前侧边栏状态 isOpen:", true);  // 添加这行来查看 isOpen 状态
   };
 
   // 删除商品

@@ -1,64 +1,28 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useCart } from "./context/CartContext";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { AnimatedTooltip } from "../components/ui/animated-tooltip";
-import { Button } from "@heroui/react";
-
-const people = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image: "/images/line (2).png",
-  },
-  {
-    id: 2,
-    name: "Robert Johnson",
-    designation: "Product Manager",
-    image: "/images/line (2).png",
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    designation: "Data Scientist",
-    image: "/images/line (2).png",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "UX Designer",
-    image: "/images/line (2).png",
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Soap Developer",
-    image: "/images/line (2).png",
-  },
-  {
-    id: 6,
-    name: "Dora",
-    designation: "The Explorer",
-    image: "/images/line (2).png",
-  },
-];
+import { Button } from "@heroui/react"; // 按钮组件
 
 const Sidebar = () => {
+  const { cartItems, totalPrice, removeFromCart, updateQuantity, isOpen, setIsOpen } = useCart(); // 从上下文中获取 isOpen 和 setIsOpen
 
-  const { cartItems, totalPrice, removeFromCart, updateQuantity } = useCart();
-  const [isOpen, setIsOpen] = useState(false); // 預設為關閉
-
-  // 點擊按鈕來切換側邊欄的開關
+  // 切换侧边栏状态
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen); // 切换 isOpen 状态
+    console.log("Toggle Sidebar, isOpen:", !isOpen); // 调试信息
   };
-  // 將側邊欄中的商品轉換為 WooCommerce 需要的格式
+
+  useEffect(() => {
+    console.log("Sidebar state updated, isOpen:", isOpen); // 打印 isOpen 状态变化
+  }, [isOpen]); // 监听 isOpen 变化
+
+  // 将侧边栏中的商品转换为 WooCommerce 需要的格式
   const getWooCommerceFormData = () => {
     const addToCartIds = [];
     const quantities = [];
 
-    // 獲取每個商品的ID和數量
+    // 获取每个商品的ID和数量
     cartItems.forEach((item) => {
       addToCartIds.push(item.id);
       quantities.push(item.quantity);
@@ -67,117 +31,121 @@ const Sidebar = () => {
     return { addToCartIds, quantities };
   };
 
-  // 生成 URL 並在提交表單前打印到 console
+  // 生成 URL 并在提交表单前打印到 console
   const handleSubmit = (e) => {
-    e.preventDefault(); // 防止表單實際提交
+    e.preventDefault(); // 防止表单实际提交
 
     const { addToCartIds, quantities } = getWooCommerceFormData();
 
     let url = "https://starislandbaby.com/test/cart/?add-to-cart=";
 
-    // 添加所有商品 ID 和數量到 URL 中
+    // 添加所有商品 ID 和数量到 URL 中
     url += addToCartIds.join(",");
     url += "&quantity=" + quantities.join(",");
 
     console.log("生成的 URL:", url);
 
-    // 跳轉到 WooCommerce 購物車頁面
+    // 跳转到 WooCommerce 购物车页面
     window.location.href = url;
   };
 
   return (
-   <div className="bg-gray-200 fixed w-[100vw] z-[99999999999] right-0 top-[30%]">
+    <div className="bg-gray-200 fixed w-[100vw] z-[99999999999] right-0 top-[30%]">
       <div className="relative w-full flex">
         <motion.div
-          className="sidebar absolute z-[99999999] top-0 p-5 right-0 w-[400px] pl-[50px] bg-white border h-[700px]"
-          initial={{ x: "100%" }} // 初始位置在右側以外
-          animate={{ x: isOpen ? 0 : "100%" }} // 當開啟時，從右側滑入；當關閉時，向右滑出
+          className="sidebar absolute z-[99999999] top-0 p-5 right-0 w-full sm:w-[400px] pl-[50px] bg-white border sf rounded-[35px] border-gray-100 shadow-2xl h-[700px]"
+          initial={{ x: "100%" }} // 初始位置在右侧以外
+          animate={{ x: isOpen ? 0 : "100%" }} // 动画根据 isOpen 状态更新
           transition={{ duration: 0.3 }}
+          onAnimationComplete={() =>
+            console.log(`Sidebar animation completed. isOpen: ${isOpen}`) // 添加动画完成的 log
+          }
         >
-          <button
-            onClick={toggleSidebar}
-            className="top-3/4 absolute z-[9999999999999] right-[400px] bg-gray-600 w-[50px] text-white p-2 !rounded-tl-md !rounded-bl-md"
-          >
-            {isOpen ? "close" : "open"} <b className="font-[12px] text-black">側邊欄</b>
-          </button>
+<button
+  onClick={toggleSidebar}
+  className="sm:top-10 absolute z-[9999999999999] right-[300px] top-[-38px] sm:right-[400px] bg-gray-600 w-[50px] text-white p-2 !rounded-tl-md !rounded-bl-md flex flex-col items-center justify-center"
+>
+  <span className="text-white  writing-mode: vertical-rl;
+  text-orientation: mixed;">{isOpen ? "close" : "open"}</span>
+  <b className="font-[12px] text-white"></b>
+</button>
 
           <h2 className="mb-5">購物車</h2>
           {cartItems.length === 0 ? (
             <p>您的購物車是空的</p>
           ) : (
-           <ul className="overflow-hidden relative flex flex-col">
-  {cartItems.length === 0 ? (
-    <p>您的購物車是空的</p>
-  ) : (
-    cartItems.map((item, index) => (
-      <li key={index} className="flex px-5 justify-center items-center w-full overflow-scroll !border-gray-200 gap-4 border-b py-2">
-        {/* 商品圖片 */}
-        <div className="img-wrap w-1/2">
-          <Image
-            src={item.image}
-            alt={item.name}
-            width={250}
-            height={250}
-            className="max-w-[100px]"
-            placeholder="empty"
-            loading="lazy"
-          />
-        </div>
-        {/* 商品名稱 */}
-        <div className="w-1/2 flex justify-between h-full">
-          <div className="ml-auto text-right">
-            <div>
-              <span className="block font-bold">{item.name}</span>
-              <span>顏色: {item.color}</span>
-              <span>尺寸: {item.size}</span>
-            </div>
-            <div>
-              <span>${item.price}</span>
-              <p>
-                數量:
-                <button
-                  onClick={() =>
-                    updateQuantity(
-                      item.id,
-                      item.color,
-                      item.size,
-                      item.quantity - 1
-                    )
-                  }
+            <ul className="overflow-hidden relative flex flex-col">
+              {cartItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex px-5 justify-center items-center w-full overflow-scroll !border-gray-200 gap-4 border-b py-2"
                 >
-                  -
-                </button>
-                {item.quantity}
-                <button
-                  onClick={() =>
-                    updateQuantity(
-                      item.id,
-                      item.color,
-                      item.size,
-                      item.quantity + 1
-                    )
-                  }
-                >
-                  +
-                </button>
-              </p>
-              <button
-                onClick={() =>
-                  removeFromCart(item.id, item.color, item.size)
-                }
-                className="text-red-500"
-              >
-                刪除
-              </button>
-            </div>
-          </div>
-        </div>
-      </li>
-    ))
-  )}
-</ul>
-
+                  {/* 商品圖片 */}
+                  <div className="img-wrap w-1/2">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={250}
+                      height={250}
+                      className="max-w-[100px]"
+                      placeholder="empty"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* 商品名稱 */}
+                  <div className="w-1/2 flex justify-between h-full">
+                    <div className="ml-auto text-right">
+                      <div>
+                        <span className="block font-bold">{item.name}</span>
+                        <span>顏色: {item.color}</span>
+                        <span>尺寸: {item.size}</span>
+                      </div>
+                      <div>
+                        <span>${item.price}</span>
+                        <p>
+                          數量:
+                          <button
+                            onClick={() =>
+                              updateQuantity(
+                                item.id,
+                                item.color,
+                                item.size,
+                                item.quantity - 1
+                              )
+                            }
+                          >
+                            -
+                          </button>
+                          {item.quantity}
+                          <button
+                            onClick={() =>
+                              updateQuantity(
+                                item.id,
+                                item.color,
+                                item.size,
+                                item.quantity + 1
+                              )
+                            }
+                          >
+                            +
+                          </button>
+                        </p>
+                        <button
+                          onClick={() =>
+                            removeFromCart(item.id, item.color, item.size)
+                          }
+                          className="text-red-500"
+                        >
+                          刪除
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           )}
+
           <div className="w-full text-left mt-3 pl-9 bottom-0 left-0 py-2">
             <p className="text-[18px] font-bold text-right pr-5">
               訂單總金額: ${totalPrice}

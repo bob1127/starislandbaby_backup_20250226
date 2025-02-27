@@ -135,37 +135,30 @@ export default function Home() {
   return (
     <Layout>
       <div className="bg-[#e0d5c8] ">
+        <section
+          className="section_Hero pt-[100px] md:pt-[160px] 2xl:pt-[200px]"
+          data-aos-delay="7000"
+          data-aos="fade-up"
+        >
+          <SwiperCarouselHero />
+        </section>
         <div
           data-aos="fade-up"
-          className="section-hero px-0 sm:px-[30px] md:px-[80px] xl:px-[200px] pb-[20px]  md:pb-[100px] pt-[100px] md:pt-[220px] xl:pt-[300px]"
+          className="section-hero px-0 sm:px-[30px] md:px-[80px] xl:px-[200px] pt-[50px] md:pt-[60px] xl:pt-[150px]"
         >
-          <Image
+          {/* <Image
             width={1920}
-            src="/images/S__4915214.jpg"
+            src="/images/S__4915213.jpg"
             height={658}
             placeholder="empty"
-            className="rounded-none md:rounded-[20px] xl:rounded-[50px]"
+            className="rounded-none md:rounded-[20px] w-[85%] mx-auto xl:rounded-[50px]"
             alt="hero-img"
             loading="lazy"
-          ></Image>
-          {/* <video
-            loop
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-auto"
-          >
-            <source
-              src="https://www.woollykids.com/cdn/shop/videos/c/vp/b4dcb6c541e94bb1bd44e6364c0ebdc9/b4dcb6c541e94bb1bd44e6364c0ebdc9.HD-1080p-7.2Mbps-26447959.mp4?v=0"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video> */}
+          ></Image> */}
         </div>{" "}
         <div className="fixed left-0 z-[999999]"> </div>
         {/* <SmallChildrenProducts /> */}
-        <section className="section_main_category mt-[20px] 2xl:mt-[0px] ">
+        <section className="section_main_category mt-[20px] md:pt-[100px] 2xl:mt-[0px] ">
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 w-[80%] mx-auto">
             <div className="hover:scale-105 hover:rotate-6 duration-300">
               <Link href="/images/LINE_ALBUM_2025211_250212_1-removebg-preview.png">
@@ -216,13 +209,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
-        <section
-          className="section_Hero"
-          data-aos-delay="7000"
-          data-aos="fade-up"
-        >
-          <SwiperCarouselHero />
         </section>
         <div className="mt-3">
           <SmallChildrenProducts />
@@ -574,13 +560,13 @@ export default function Home() {
             </div>
             <div className="w-1/2 flex justify-center  items-center"></div>
           </section> */}
-          <section className="section_banner px-5 ">
+          <section className="section_banner px-5 py-[50px] xl:py-[100px]">
             <Image
               src="/images/O1CN01S7LQ011LrijuVOdGC_!!3480251353-0-cib.jpg"
               placeholder="empty"
               alt="banner"
               loading="lazy"
-              className="rounded-2xl"
+              className="rounded-2xl 2xl:w-[85%] md:w-[90%] mx-auto"
               width="1800"
               height="700"
             />

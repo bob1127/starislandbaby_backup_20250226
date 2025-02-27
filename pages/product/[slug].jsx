@@ -226,7 +226,7 @@ const ProductPage = ({ product }) => {
       </Head>
 
       <div
-        className="flex flex-col items-center border-3 border-black  mx-auto sm:px-[50px] lg:px-[20px] 2xl:px-[200px]"
+        className="flex flex-col items-center   mx-auto sm:px-[50px] lg:px-[20px] 2xl:px-[200px]"
         data-aos="fade-up"
       >
         <div className="product_top_info w-full px-[20px] sm:px-[50px] xl:px-[100px] pt-[140px] sm:pt-[200px] xl:pt-[200px]">

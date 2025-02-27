@@ -64,14 +64,9 @@ export async function getStaticProps({ params }) {
   console.log("getStaticProps is called with params:", params);
 
   let { slug } = params;
-  console.log("Received slug:", slug);
+  slug = decodeURIComponent(slug);
 
   try {
-    // 确保对 slug 进行解码
-    slug = decodeURIComponent(slug);
-    console.log("Decoded slug:", slug);
-
-    // 获取并过滤符合 slug 的产品
     const products = await fetchProductsBySlug(slug);
 
     return {
@@ -79,7 +74,7 @@ export async function getStaticProps({ params }) {
         slug,
         products,
       },
-      revalidate: 10, // 每 10 秒重新生成页面
+      revalidate: 10, // ⬅ 这里是 ISR 设置
     };
   } catch (error) {
     console.error("Error in getStaticProps:", error);
