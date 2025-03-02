@@ -9735,6 +9735,11 @@
     "invariant" "^2.2.4"
     "tslib" "^2.0.0"
 
+"react-swipeable@^7.0.2":
+  "integrity" "sha512-v1Qx1l+aC2fdxKa9aKJiaU/ZxmJ5o98RMoFwUqAAzVWUcxgfHFXDDruCKXhw6zIYXm6V64JiHgP9f6mlME5l8w=="
+  "resolved" "https://registry.npmjs.org/react-swipeable/-/react-swipeable-7.0.2.tgz"
+  "version" "7.0.2"
+
 "react-textarea-autosize@^8.5.2", "react-textarea-autosize@^8.5.3":
   "integrity" "sha512-2MqJ3p0Jh69yt9ktFIaZmORHXw4c4bxSIhCeWiFwmJ9EYKgLmuNII3e9c9b2UO+ijl4StnpZdqpxNIhTdHvqtQ=="
   "resolved" "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.5.7.tgz"

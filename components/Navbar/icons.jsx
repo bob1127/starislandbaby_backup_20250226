@@ -171,13 +171,13 @@ export default function App() {
           <LineIcon />
         </Button>
       </a>
-      <Link href="https://starislandbaby.com/test/my-account/">
+      <Link href="https://starislandbaby.com/test/registration/">
         {" "}
         <Button isIconOnly aria-label="User" color="secondary" variant="faded">
           <UserIcon />
         </Button>
       </Link>
-      <Link href="https://starislandbaby.com/test/cart/">
+      <Link href="/cart">
         {" "}
         <Button isIconOnly aria-label="Cart" color="danger">
           <CartIcon />

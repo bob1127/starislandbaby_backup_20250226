@@ -101,6 +101,7 @@
     "react-sticky": "^6.0.3",
     "react-sticky-box": "^2.0.5",
     "react-sticky-el": "^2.1.0",
+    "react-swipeable": "^7.0.2",
     "react-toggle-dark-mode": "^1.1.1",
     "react-youtube": "^10.1.0",
     "read-more-react": "^1.0.10",

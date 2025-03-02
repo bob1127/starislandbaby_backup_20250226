@@ -119,7 +119,7 @@ const CategoryPage = ({ slug, products }) => {
                 src="/images/categories_banner.jpg"
               />
               <div
-                className="flex flex-wrap justify-center sm:justify-start items-center"
+                className="flex pr-2 flex-wrap justify-start sm:justify-start items-start"
                 data-aos="fade-up"
               >
                 {products.map((product) => {
@@ -137,14 +137,17 @@ const CategoryPage = ({ slug, products }) => {
                     <Link
                       key={product.id}
                       href={`/product/${encodeURIComponent(product.slug)}`} // 确保 slug 编码
-                      className="mt-2"
+                      className="mt-2 w-1/2 hover:scale-105 duration-200  group mb-3 sm:w-[260px] 2xl:w-[280px]"
                     >
-                      <div className="card m-3 overflow-hidden w-[320px] sm:w-[260px] 2xl:w-[280px] bg-[#E4E6E1] border rounded-xl border-gray-100 p-8">
-                        <img
+                      <div className="card mx-2 overflow-hidden w-[98%]   border rounded-xl border-gray-100 pr-1 md:p-8">
+                        <Image
                           src={productImage}
                           alt={product.name}
-                          className="w-full h-48 object-cover mb-4"
+                          width={300}
+                          height={300}
+                          className="w-full rounded-[40px] border-2 border-gray-300 group-hover:shadow-lg group-hover:shadow-gray-500/50 duration-200 mb-3 object-contain"
                         />
+
                         <span className="font-bold text-[16px]">
                           {product.name}
                         </span>

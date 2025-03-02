@@ -28,7 +28,7 @@ export default function Navbar() {
         <img
           src="/images/company-logo.png"
           alt="company-logo"
-          className={`transition-all mx-auto mt-4 w-[45px] sm:w-[55px] mr-4 duration-300 
+          className={`transition-all mx-auto  w-[45px] sm:w-[55px]  duration-300 
             ${isScrolled ? "lg:w-[55px]" : "lg:w-[110px]"}`}
         />
       </a>

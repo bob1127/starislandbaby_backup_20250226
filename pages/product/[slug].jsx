@@ -229,7 +229,7 @@ const ProductPage = ({ product }) => {
         className="flex flex-col items-center   mx-auto sm:px-[50px] lg:px-[20px] 2xl:px-[200px]"
         data-aos="fade-up"
       >
-        <div className="product_top_info w-full px-[20px] sm:px-[50px] xl:px-[100px] pt-[140px] sm:pt-[200px] xl:pt-[200px]">
+        <div className="product_top_info w-full px-[20px] sm:px-[50px] xl:px-[100px] pt-[210px] sm:pt-[200px] xl:pt-[200px]">
           <div className="flex lg:flex-row flex-col justify-center items-center">
             <div className="w-full lg:w-1/2 p-2 lg:p-8 flex-col mx-auto flex justify-center items-center">
               {/* Main Image Swiper */}

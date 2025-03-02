@@ -29,6 +29,7 @@ import Icons from "./icons.jsx";
 // import MobileMenu from "../mobileMenu/index.jsx";
 import Marquee from "react-fast-marquee";
 import DropDown from "../../components/DropdownMenu.jsx";
+import Timer from "../../components/ShiftingCountdown";
 // Define SlideTabsExample component
 export const SlideTabsExample = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -49,27 +50,92 @@ export const SlideTabsExample = () => {
   return (
     <>
       <div className="top-0 mt-[-40px]  pt-8  flex mx-auto left-[40%]   justify-center bg-white flex-col items-center fixed  w-[100%] z-[999999]">
-        <div className="flex bg-[#91AD9E] h-16 items-center py-3 w-[100vw] sm:hidden pt-4 pb-2 justify-center">
+        <div className="flexd flex-col bg-[#91AD9E] h-[120px] items-center py-3 w-[100vw] overflow-hidden sm:hidden pt-6 pb-2 justify-center">
           <Swiper
             direction="vertical"
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             loop={true}
-            className="h-[20px]  justify-center flex items-center"
+            className="h-[95px]  justify-center flex items-center"
             modules={[Autoplay]}
           >
             <SwiperSlide className="flex justify-center">
               <div className="text-center text-white text-[14.5px]">
                 全館單筆消費|滿999享單次超取免運
+                <div className="flex mt-2">
+                  <div className="w-3/5">
+                    {" "}
+                    <Timer />
+                  </div>
+                  <div className="w-2/5 flex justify-start">
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://www.starislandbaby.com/category/all-product/";
+                      }}
+                      class="relative h-12 overflow-hidden rounded-md border border-neutral-200 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 bg-white before:block before:h-full before:w-full before:translate-y-full before:bg-neutral-100 before:transition-transform hover:before:translate-y-0 flex items-center justify-center"
+                    >
+                      <span class="relative">SHOP</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide className="flex justify-center">
               <div className="text-center text-white text-[14.5px]">
-                點我加入官方line
+                <Link
+                  href="https://line.me/R/ti/p/@391huuts"
+                  target="_blank"
+                  className="text-white border-none"
+                >
+                  點我加入官方line
+                </Link>
+                <div className="flex mt-2">
+                  <div className="w-3/5">
+                    {" "}
+                    <Timer />
+                  </div>
+                  <div className="w-2/5 flex justify-start">
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://www.starislandbaby.com/category/all-product/";
+                      }}
+                      class="relative h-12 overflow-hidden rounded-md border border-neutral-200 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 bg-white before:block before:h-full before:w-full before:translate-y-full before:bg-neutral-100 before:transition-transform hover:before:translate-y-0 flex items-center justify-center"
+                    >
+                      <span class="relative">SHOP</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide className="flex justify-center">
               <div className="text-center text-white text-[14.5px]">
-                當月小壽星|快來領生日禮🎂
+                <Link
+                  href="https://www.starislandbaby.com/gift/"
+                  target="_blank"
+                  className="text-white border-none"
+                >
+                  {" "}
+                  當月小壽星|快來領生日禮🎂
+                </Link>
+
+                <div className="flex mt-2">
+                  <div className="w-3/5">
+                    {" "}
+                    <Timer />
+                  </div>
+                  <div className="w-2/5 flex justify-start">
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://www.starislandbaby.com/category/all-product/";
+                      }}
+                      class="relative h-12 overflow-hidden rounded-md border border-neutral-200 bg-transparent px-6 text-neutral-950 before:absolute before:bottom-0 before:left-0 bg-white before:block before:h-full before:w-full before:translate-y-full before:bg-neutral-100 before:transition-transform hover:before:translate-y-0 flex items-center justify-center"
+                    >
+                      <span class="relative">SHOP</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           </Swiper>
@@ -108,7 +174,7 @@ export const SlideTabsExample = () => {
                 <NavbarContent justify="end">
                   <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                    className="sm:hidden !pt-4"
+                    className="sm:hidden "
                   />
                 </NavbarContent>
                 <NavbarMenu className="!pt-20">
@@ -135,7 +201,7 @@ export const SlideTabsExample = () => {
                 <Image
                   src="/images/online-shopping.png"
                   placeholder="empty"
-                  className="w-[34px] mt-4 h-[34px] block sm:hidden"
+                  className="w-[34px]  h-[34px] block sm:hidden"
                   width={40}
                   height={40}
                   alt="cart-logo"
