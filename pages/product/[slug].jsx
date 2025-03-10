@@ -4,7 +4,9 @@ import Head from "next/head";
 import { useCart } from "../../components/context/CartContext";
 import Layout from "../Layout";
 // Swiper imports
-
+import { CardStack } from "../../components/ui/card-stack";
+import Accordion from "../../components/Accordion/Accordion.jsx";
+import SwiperCard from "../../components/SwiperCarousel/SwiperCardTravel.jsx";
 import {
   Modal,
   ModalContent,
@@ -208,6 +210,38 @@ const ProductPage = ({ product }) => {
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const CARDS = [
+    {
+      id: 0,
+      name: "M張哲瑋",
+      designation: "",
+      content: (
+        <p>
+          These cards are amazing, in my project. Framer motion is a godsend ngl
+          tbh fam 🙏
+        </p>
+      ),
+    },
+    {
+      id: 1,
+      name: "張哲瑋",
+      designation: "",
+      content: (
+        <p>
+          I dont like this Twitter thing, so that it can easily be confused with
+          adult sites.
+        </p>
+      ),
+    },
+    {
+      id: 2,
+      name: "張哲瑋",
+      designation: "",
+      content: (
+        <p>The first rule of is that you DO NOT TALK about fight club.</p>
+      ),
+    },
+  ];
 
   if (!product) return <div>Product not found.</div>;
   return (
@@ -327,21 +361,18 @@ const ProductPage = ({ product }) => {
                   </Button>
                   <Modal
                     isOpen={isOpen}
-                    className=" !z-[999999999] bg-white overflow-scroll !static !mt-[28%]"
+                    className=" !z-[999999999] bg-white overflow-scroll !static !mt-[8%]"
                     onOpenChange={onOpenChange}
                   >
                     <ModalContent>
                       {(onClose) => (
                         <>
-                          <ModalHeader className="flex flex-col p-10 gap-1">
-                            尺寸表
-                          </ModalHeader>
                           <ModalBody>
                             <Image
                               width={500}
                               height={700}
                               className=""
-                              src="/images/S__4751370.jpg"
+                              src="/images/size-chart.jpg"
                               alt="尺寸表"
                               placeholder="empty"
                               loading="lazy"
@@ -447,7 +478,7 @@ const ProductPage = ({ product }) => {
                 </div>
                 <button
                   onClick={handleAddToCart}
-                  class="group mt-5 relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-white font-medium"
+                  class="group mb-[50px] mt-5 relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-white font-medium"
                 >
                   <div class="inline-flex h-12 translate-y-0 items-center justify-center px-6 text-neutral-950 transition duration-500 group-hover:-translate-y-[150%]">
                     立即購買
@@ -458,11 +489,26 @@ const ProductPage = ({ product }) => {
                     <span class="z-10 text-white">添加至購物車</span>
                   </div>
                 </button>
+                <Accordion />
+                <div className="payment mt-8 border border-gray-200 w-[500px] rounded-[20px] p-8">
+                  <b className="font-bold text-[20px]">支付方式</b>
+                  <div>
+                    <img
+                      src="/images/Payment-Icons-1-removebg-preview.png"
+                      alt=""
+                      className="w-[60%]"
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-5 h-[200px] flex items-center justify-center w-full">
+                  <CardStack items={CARDS} />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex px-[10vw] xl:px-[20vw] w-full flex-col">
+        <div className="flex px-[10vw] xl:px-[10vw] w-full flex-col">
           <Tabs aria-label="Options">
             <Tab key=" 商品說明" title=" 商品說明">
               <Card>
@@ -490,6 +536,9 @@ const ProductPage = ({ product }) => {
               </Card>
             </Tab>
           </Tabs>
+
+          <h2 cl>你可能也會喜歡</h2>
+          <SwiperCard />
         </div>
 
         {/* Render Product Description with custom Image handling */}

@@ -276,7 +276,7 @@ section.section_article p{
 
 }
 
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+/* .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
     content: "←" !important;
   color: black !important;
   background-color: transparent;
@@ -290,12 +290,12 @@ section.section_article p{
     width: 40px;
     padding: 5px;
     height: 35px;
-}
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+} */
+/* .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
   content: "→" !important;
   color: black !important;
   font-size: 25px !important; 
-}
+} */
 /* a{
   opacity: 0 !important;
 } */

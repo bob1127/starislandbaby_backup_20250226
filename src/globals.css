@@ -266,26 +266,43 @@ section.section_article p{
 
 }
 
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
-    content: "←" !important;
-  color: black !important;
-  background-color: transparent;
-  font-size: 25px !important;
+/* 移除 Swiper 預設箭頭 */
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  content: "" !important;
+}
+
+/* 左右導航按鈕樣式 */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 左箭頭（向左旋轉） */
+.swiper-button-prev {
+  background-image: url("/images/right-arrow.png");
+  transform: rotate(180deg); /* 讓箭頭指向左方 */
   
 }
-.swiper-button-prev:hover:after,.swiper-button-next:hover:after{
-    color: white !important;
-    background-color: rgb(43, 43, 43);
-    border-radius: 100%;
-    width: 40px;
-    padding: 5px;
-    height: 35px;
+
+/* 右箭頭 */
+.swiper-button-next {
+  background-image: url("/images/right-arrow.png");
+  
 }
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
-  content: "→" !important;
-  color: black !important;
-  font-size: 25px !important; 
+
+/* 滑鼠懸停效果 */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+ 
+  transform: scale(1.05);
+  
 }
+
 /* a{
   opacity: 0 !important;
 } */

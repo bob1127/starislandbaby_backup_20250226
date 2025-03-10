@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import Link from "next/link";
-const video = [""];
-const imgs = [
-  typeof window !== "undefined" && window.innerWidth <= 550
-    ? "/images/banner02_600x600.jpg"
-    : "/images/banner01_1920x768.jpg",
-  "/images/S__4915213.jpg",
-  "/images/S__4677656.png",
-];
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -23,7 +15,26 @@ const SPRING_OPTIONS = {
 
 export default () => {
   const [imgIndex, setImgIndex] = useState(0);
+  const [isClient, setIsClient] = useState(false); // 用來判斷是否在瀏覽器端
   const dragX = useMotionValue(0);
+
+  // 確保只有在瀏覽器端獲取 window 物件
+  useEffect(() => {
+    setIsClient(typeof window !== "undefined");
+  }, []);
+
+  // 根據螢幕尺寸設定圖片陣列
+  const imgs = isClient
+    ? [
+        window.innerWidth <= 550
+          ? "/images/banner02_600x600.jpg"
+          : "/images/banner01_1920x768.jpg",
+        window.innerWidth <= 550
+          ? "/images/S__4915217.jpg"
+          : "/images/S__4915213.jpg",
+        "/images/S__4677656.png",
+      ]
+    : [];
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
@@ -33,7 +44,7 @@ export default () => {
       }
     }, AUTO_DELAY);
     return () => clearInterval(intervalRef);
-  }, []);
+  }, [imgs]);
 
   const onDragEnd = () => {
     const x = dragX.get();
@@ -45,7 +56,7 @@ export default () => {
   };
 
   return (
-    <div className="relative mx-auto w-full sm:w-[80%] 2xl:w-[1920px] mt-[80px] md:mt-[100px] 2xl:mt-[50px] py-0">
+    <div className="relative mx-auto w-full sm:w-[80%] 2xl:w-[50%] mt-[80px] md:mt-[100px] 2xl:mt-[50px] py-0">
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
@@ -55,14 +66,14 @@ export default () => {
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing"
       >
-        <Images imgIndex={imgIndex} />
+        <Images imgIndex={imgIndex} imgs={imgs} />
       </motion.div>
       <GradientEdges />
     </div>
   );
 };
 
-const Images = ({ imgIndex }) => {
+const Images = ({ imgIndex, imgs }) => {
   return (
     <>
       {imgs.map((imgSrc, idx) => (
@@ -70,20 +81,11 @@ const Images = ({ imgIndex }) => {
           key={idx}
           style={{
             backgroundImage: `url(${imgSrc})`,
-            backgroundSize:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? "contain"
-                : "cover",
+            backgroundSize: window.innerWidth < 768 ? "contain" : "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            width:
-              typeof window !== "undefined" && window.innerWidth <= 550
-                ? "100%"
-                : "100%",
-            height:
-              typeof window !== "undefined" && window.innerWidth <= 550
-                ? "350px"
-                : "100%",
+            width: "100%",
+            height: window.innerWidth <= 550 ? "350px" : "100%",
           }}
           animate={{ scale: imgIndex === idx ? 0.95 : 0.85 }}
           transition={SPRING_OPTIONS}

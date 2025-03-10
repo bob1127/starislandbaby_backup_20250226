@@ -66,7 +66,7 @@ const Sidebar = () => {
   className="sm:top-10 absolute z-[9999999999999] right-[300px] top-[-38px] sm:right-[400px] bg-gray-600 w-[50px] text-white p-2 !rounded-tl-md !rounded-bl-md flex flex-col items-center justify-center"
 >
   <span className="text-white  writing-mode: vertical-rl;
-  text-orientation: mixed;">{isOpen ? "close" : "open"}</span>
+  text-orientation: mixed;">{isOpen ? "關閉" : "購物車"}</span>
   <b className="font-[12px] text-white"></b>
 </button>
 

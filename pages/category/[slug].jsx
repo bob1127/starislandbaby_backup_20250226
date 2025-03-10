@@ -87,7 +87,10 @@ const CategoryPage = ({ slug, products }) => {
 
   return (
     <Layout>
-      <div className="mb-[200px] mt-[100px] sm:mt-[170px] lg:mt-[250px]  xl:mt-[300px] flex flex-col">
+      <div
+        data-aos="fade-up"
+        className="mb-[200px] mx-0 sm:mx-[50px] lg:mx-[100px] 2xl:mx-[200px] mt-[100px] sm:mt-[170px] lg:mt-[250px]  xl:mt-[300px] flex flex-col"
+      >
         <div className="top-navgation pl-10">
           <a href="/">Home</a> ← <span>{slug ? slug : "All Products"}</span>
         </div>
@@ -107,21 +110,17 @@ const CategoryPage = ({ slug, products }) => {
 
           {/* 右側產品區域，只有在有產品時才顯示 */}
           {products && products.length > 0 && (
-            <div className="right w-[100%] justify-center items-center lg:items-start lg:justify-start sm:pt-10 flex-col flex 2xl:w-[75%] 2xl:pr-[200px] pt-5 products_menu">
+            <div className="right w-[100%] justify-center items-center lg:items-start lg:justify-start sm:pt-10 flex-col flex 2xl:w-[100%] 2xl:pr-[0px] pt-5 products_menu">
               <Image
-                data-aos="fade-up"
-                width={500}
-                height={400}
+                width={1900}
+                height={600}
                 alt="categories_banner"
                 placeholder="empty"
                 loading="eager"
-                className="rounded-2xl h-auto w-[90%] "
+                className="rounded-2xl h-auto w-full "
                 src="/images/categories_banner.jpg"
               />
-              <div
-                className="flex pr-2 flex-wrap justify-start sm:justify-start items-start"
-                data-aos="fade-up"
-              >
+              <div className="flex pr-2 flex-wrap justify-start sm:justify-start items-start">
                 {products.map((product) => {
                   const productImage =
                     product.images?.[0]?.src || "/default-image.jpg";
@@ -137,9 +136,9 @@ const CategoryPage = ({ slug, products }) => {
                     <Link
                       key={product.id}
                       href={`/product/${encodeURIComponent(product.slug)}`} // 确保 slug 编码
-                      className="mt-2 w-1/2 hover:scale-105 duration-200  group mb-3 sm:w-[260px] 2xl:w-[280px]"
+                      className="mt-2 w-1/2 hover:scale-105 duration-200  group mb-3 sm:w-[260px] md:w-[280px] 2xl:w-[330px]"
                     >
-                      <div className="card mx-2 overflow-hidden w-[98%]   border rounded-xl border-gray-100 pr-1 md:p-8">
+                      <div className="card mx-2 overflow-hidden w-[98%]    rounded-xl  pr-1 md:p-8">
                         <Image
                           src={productImage}
                           alt={product.name}

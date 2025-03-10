@@ -117,7 +117,7 @@ const ProductPage = ({ product }) => {
                     尺寸表
                   </ModalHeader>
                   <ModalBody>
-                    <img src="/images/S__4751370.jpg" alt="Size Chart" />
+                    <img src="/images/size-chart.jpg" alt="Size Chart" />
                   </ModalBody>
                   <ModalFooter></ModalFooter>
                 </ModalContent>

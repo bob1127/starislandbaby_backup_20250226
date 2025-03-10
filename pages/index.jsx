@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 // import { AnimatePresence } from "framer-motion";
 // import Preloader from "../components/toys05/Preloader";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-
 import Layout from "./Layout.js";
 import Link from "next/link";
 import BabyProducts from "@/components/BabyProducts";
 import CategoriesProducts from "@/components/ＣategorieProducts";
 import SmallChildrenProducts from "@/components/SmallChildrenProducts"; // 引入你的新組件
+import SwiperCarousel from "../components/SwiperCarousel/SwiperCard.jsx";
 // import SidebarNav from "../components/SideBar.jsx";
 // import Landing from "../components/toys05/Landing";
 // import Projects from "../components/toys05/Projects";
@@ -127,28 +127,15 @@ export default function Home() {
   ];
   return (
     <Layout>
-      <div className="bg-[#e0d5c8] ">
+      <div className="bg-[#e0d5c8] pt-[90px]">
         <section
-          className="section_Hero pt-[100px] md:pt-[160px] 2xl:pt-[200px]"
+          className="section_Hero w-full mx-auto pt-[200px] md:pt-[160px] 2xl:pt-[70px]"
           data-aos-delay="7000"
           data-aos="fade-up"
         >
-          <SwiperCarouselHero />
+          <SwiperCarousel />
         </section>
-        <div
-          data-aos="fade-up"
-          className="section-hero px-0 sm:px-[30px] md:px-[80px] xl:px-[200px] pt-[50px] md:pt-[60px] xl:pt-[150px]"
-        >
-          {/* <Image
-            width={1920}
-            src="/images/S__4915213.jpg"
-            height={658}
-            placeholder="empty"
-            className="rounded-none md:rounded-[20px] w-[85%] mx-auto xl:rounded-[50px]"
-            alt="hero-img"
-            loading="lazy"
-          ></Image> */}
-        </div>{" "}
+
         <div className="fixed left-0 z-[999999]"> </div>
         {/* <SmallChildrenProducts /> */}
         <section className="section_main_category mt-[20px] md:pt-[100px] 2xl:mt-[0px] ">

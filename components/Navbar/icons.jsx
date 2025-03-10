@@ -1,7 +1,8 @@
 import { Button } from "@heroui/react";
 import Link from "next/link";
+
 export const CartIcon = ({
-  fill = "currentColor",
+  fill = "black", // Black color
   size,
   height,
   width,
@@ -30,7 +31,7 @@ export const CartIcon = ({
 };
 
 export const FacebookIcon = ({
-  fill = "currentColor",
+  fill = "black", // Black color
   size,
   height,
   width,
@@ -57,7 +58,7 @@ export const FacebookIcon = ({
 };
 
 export const InstagramIcon = ({
-  fill = "currentColor",
+  fill = "black", // Black color
   size,
   height,
   width,
@@ -88,7 +89,7 @@ export const InstagramIcon = ({
 };
 
 export const LineIcon = ({
-  fill = "currentColor",
+  fill = "black", // Black color
   size,
   height,
   width,
@@ -115,7 +116,7 @@ export const LineIcon = ({
 };
 
 export const UserIcon = ({
-  fill = "currentColor",
+  fill = "black", // Black color
   size,
   height,
   width,
@@ -138,7 +139,7 @@ export const UserIcon = ({
 
 export default function App() {
   return (
-    <div className="flex  gap-4 items-center">
+    <div className="flex gap-4 items-center">
       <a
         href="https://www.facebook.com/profile.php?id=61569146001285"
         target="_black"
@@ -166,20 +167,17 @@ export default function App() {
         </Button>
       </a>
       <a href="https://line.me/R/ti/p/@391huuts" target="_black">
-        {" "}
         <Button isIconOnly aria-label="LINE" color="success" variant="faded">
           <LineIcon />
         </Button>
       </a>
-      <Link href="https://starislandbaby.com/test/registration/">
-        {" "}
+      <Link href="/my-account">
         <Button isIconOnly aria-label="User" color="secondary" variant="faded">
           <UserIcon />
         </Button>
       </Link>
       <Link href="/cart">
-        {" "}
-        <Button isIconOnly aria-label="Cart" color="danger">
+        <Button isIconOnly aria-label="Cart" color="danger" variant="faded">
           <CartIcon />
         </Button>
       </Link>
